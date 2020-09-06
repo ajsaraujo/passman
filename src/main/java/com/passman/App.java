@@ -18,9 +18,6 @@ public class App extends Application {
     public void start(Stage primaryStage) {
         Scene login = FileUtils.loadView(View.LOGIN);
 
-        JMetro jmetro = new JMetro(Style.LIGHT);
-        jmetro.setScene(login);
-
         primaryStage.setScene(login);
         primaryStage.centerOnScreen();
         primaryStage.setTitle("Passman");
