@@ -1,7 +1,5 @@
 .idea
-*.iml
-src/main/java/
-src/test/
+*.imll
 temp.txt
 target/*
 

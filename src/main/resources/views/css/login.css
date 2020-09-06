@@ -1,0 +1,28 @@
+.hyperlink {
+    -fx-underline: false;
+}
+
+.label {
+    -fx-font-family: Verdana;
+}
+
+.hyperlink:visited {
+    -fx-underline: false;
+    -fx-border-width: 0;
+}
+
+.hyperlink:hover {
+    -fx-underline: true;
+}
+
+.button {
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: #3F51B5;
+}
+
+.button:hover {
+    -fx-background-color: #303F9F;
+    -fx-border-width: 0;
+}
