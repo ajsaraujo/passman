@@ -19,8 +19,6 @@
 
     <modules>
         <module>jpackagefx-main</module>
-        <module>jpackagefx-module1</module>
-        <module>jpackagefx-module2</module>
     </modules>
 
     <dependencies>

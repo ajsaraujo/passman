@@ -7,9 +7,6 @@ package com.dlsc.jpackagefx;
 
 import java.util.Locale;
 
-import com.dlsc.jpackage.module1.ModuleLabel1;
-import com.dlsc.jpackage.module2.ModuleLabel2;
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -28,8 +25,8 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         Label defaultLocaleLabel = new Label(Locale.getDefault().getDisplayLanguage());
-        ModuleLabel1 label1 = new ModuleLabel1();
-        ModuleLabel2 label2 = new ModuleLabel2();
+        Label label1 = new Label("Hello");
+        Label label2 = new Label("World");
         VBox box = new VBox(20, defaultLocaleLabel, label1, label2);
         box.setAlignment(Pos.CENTER);
         box.setPadding(new Insets(20));

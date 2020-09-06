@@ -2,6 +2,7 @@
 *.iml
 src/main/java/
 src/test/
+temp.txt
 
 # Eclipse artifacts
 .project
