@@ -3,6 +3,7 @@
 src/main/java/
 src/test/
 temp.txt
+target/*
 
 # Eclipse artifacts
 .project
