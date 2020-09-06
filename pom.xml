@@ -168,7 +168,7 @@
             <id>build-windows</id>
 
             <activation>
-                <os><family>windows</family></os>
+                <os><family>linux</family></os>
             </activation>
 
             <build>

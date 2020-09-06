@@ -10,6 +10,6 @@ public enum View {
     }
 
     public String getFileName() {
-        return "/views/fxml/" + name + ".fxml";
+        return "/views/" + name + ".fxml";
     }
 }

@@ -26,3 +26,8 @@
     -fx-background-color: #303F9F;
     -fx-border-width: 0;
 }
+
+.button:focused {
+    -fx-border-width: 0;
+    -fx-border-style: none;
+}

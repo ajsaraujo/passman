@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="504.0" prefWidth="450.0" styleClass="background" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <stylesheets>
-      <URL value="@../css/login.css" />
+      <URL value="@../styles/root.css"></URL>
    </stylesheets>
    <children>
       <Label layoutX="35.0" layoutY="61.0" text="Welcome back!" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="61.0">
