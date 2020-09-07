@@ -7,7 +7,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>14</java.version>
+        <java.version>11</java.version>
         <javafx.version>14.0.1</javafx.version>
         <jmetro.version>11.6.12</jmetro.version>
         <maven.compiler.source>14</maven.compiler.source>
