@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.passman.controllers.components.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import com.passman.controllers.components.FormField?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.SignUp">
+<VBox xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.SignUp">
    <children>
-      <Label layoutX="7.0" layoutY="6.0" text="Cadastrar usuário" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="35.0">
+      <Label text="Sign Up">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
+         <VBox.margin>
+            <Insets bottom="35.0" />
+         </VBox.margin>
       </Label>
-      <FormField></FormField>
+      <FormField labelText="Username:" prefHeight="87.0" prefWidth="306.0" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin></FormField>
+      <FormField labelText="Password:" />
+      <FormField labelText="Confirm Password:" />
+      <Button mnemonicParsing="false" text="Confirm" />
    </children>
-</AnchorPane>
+   <padding>
+      <Insets left="50.0" right="150.0" top="35.0" />
+   </padding>
+</VBox>
