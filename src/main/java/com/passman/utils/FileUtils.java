@@ -1,7 +1,10 @@
 package com.passman.utils;
 
+import com.passman.enums.Component;
 import com.passman.enums.View;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -13,16 +16,29 @@ import java.net.URL;
 
 public class FileUtils {
     public static Scene loadView(View view) {
-        URL url = FileUtils.class.getResource(view.getFileName());
-
         try {
-            Parent root = FXMLLoader.load(url);
+            Parent root = FXMLLoader.load(view.getUrl());
             Scene styledScene = style(new Scene(root));
 
             return styledScene;
         } catch (IOException exception) {
             exception.printStackTrace();
             return new Scene(new Pane());
+        }
+    }
+
+    public static void injectComponentController(Component component, Parent componentController) {
+        URL url = component.getUrl();
+
+        FXMLLoader loader = new FXMLLoader(url);
+
+        loader.setRoot(componentController);
+        loader.setController(componentController);
+
+        try {
+            loader.load();
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
     }
 

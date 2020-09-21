@@ -1,5 +1,7 @@
 package com.passman.enums;
 
+import java.net.URL;
+
 public enum View {
     LOGIN("login");
 
@@ -9,7 +11,7 @@ public enum View {
         this.name = name;
     }
 
-    public String getFileName() {
-        return "/views/" + name + ".fxml";
+    public URL getUrl() {
+        return View.class.getResource("/views/" + name + ".fxml");
     }
 }

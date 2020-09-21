@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0">
-
+<?import com.passman.controllers.components.FormField?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.SignUp">
+   <children>
+      <Label layoutX="7.0" layoutY="6.0" text="Cadastrar usuário" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="35.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <FormField></FormField>
+   </children>
 </AnchorPane>

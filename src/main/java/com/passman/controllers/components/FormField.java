@@ -1,4 +1,4 @@
-package com.passman.components;
+package com.passman.controllers.components;
 
 import com.passman.enums.Component;
 import com.passman.utils.FileUtils;

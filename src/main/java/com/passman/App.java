@@ -10,8 +10,6 @@ import com.passman.utils.FileUtils;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import jfxtras.styles.jmetro.JMetro;
-import jfxtras.styles.jmetro.Style;
 
 public class App extends Application {
     @Override

@@ -4,14 +4,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="$CONTROLLER_NAME$">
+<fx:root type="AnchorPane" prefHeight="126.0" prefWidth="294.0" styleClass="background" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="6.0" layoutY="6.0" text="Title:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="6.0" layoutY="30.0" />
+      <TextField layoutY="30.0" prefHeight="45.0" prefWidth="600.0" promptText="Prompt Text" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <Label prefHeight="30.0" prefWidth="600.0" text="Error message" textFill="#d32f2f" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="96.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
-</AnchorPane>
+</fx:root>
