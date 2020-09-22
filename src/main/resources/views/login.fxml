@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="504.0" prefWidth="450.0" styleClass="background" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="504.0" prefWidth="450.0" styleClass="background" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.passman.controllers.views.Login">
    <children>
       <Label layoutX="35.0" layoutY="61.0" text="Welcome back!" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="61.0">
          <font>
@@ -36,7 +35,7 @@
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
-      <Hyperlink alignment="CENTER" layoutY="398.0" prefHeight="68.0" prefWidth="450.0" text="Doesn't have an account yet? Create one" textAlignment="CENTER" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Hyperlink alignment="CENTER" layoutY="398.0" onAction="#goToSignUpView" prefHeight="68.0" prefWidth="450.0" text="Doesn't have an account yet? Create one" textAlignment="CENTER" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font size="16.0" />
          </font>

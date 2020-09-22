@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+
 <VBox xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.SignUp">
    <children>
       <Label text="Sign Up">
@@ -19,12 +20,17 @@
       <FormField labelText="Username:" prefHeight="87.0" prefWidth="306.0" VBox.vgrow="ALWAYS">
          <VBox.margin>
             <Insets />
-         </VBox.margin></FormField>
+         </VBox.margin>
+      </FormField>
       <FormField labelText="Password:" />
-      <FormField labelText="Confirm Password:" />
-      <Button mnemonicParsing="false" text="Confirm" />
+      <FormField labelText="Confirm Password:">
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </FormField>
+      <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="141.0" text="Confirm" />
    </children>
    <padding>
-      <Insets left="50.0" right="150.0" top="35.0" />
+      <Insets bottom="40.0" left="50.0" right="125.0" top="35.0" />
    </padding>
 </VBox>

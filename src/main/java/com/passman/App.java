@@ -7,6 +7,7 @@ package com.passman;
 
 import com.passman.enums.View;
 import com.passman.utils.FileUtils;
+import com.passman.utils.NavigationUtils;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -14,12 +15,7 @@ import javafx.stage.Stage;
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
-        Scene login = FileUtils.loadView(View.LOGIN);
-
-        primaryStage.setScene(login);
-        primaryStage.centerOnScreen();
-        primaryStage.setTitle("Passman");
-        primaryStage.show();
+        NavigationUtils.init(primaryStage, View.LOGIN);
     }
 
     public static void main(String[] args) {

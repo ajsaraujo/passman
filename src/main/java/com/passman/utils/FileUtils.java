@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 
 public class FileUtils {
-    public static Scene loadView(View view) {
+    public static Scene loadScene(View view) {
         try {
             Parent root = FXMLLoader.load(view.getUrl());
             Scene styledScene = style(new Scene(root));
