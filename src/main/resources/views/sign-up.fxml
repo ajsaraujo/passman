@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <VBox xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label text="Sign Up">
@@ -28,9 +27,14 @@
             <Insets bottom="10.0" />
          </padding>
       </FormField>
-      <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="141.0" text="Confirm" />
+      <HBox spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="118.0" styleClass="secondary-button" text="Cancel" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="168.0" text="Confirm" />
+         </children>
+      </HBox>
    </children>
    <padding>
-      <Insets bottom="40.0" left="50.0" right="125.0" top="35.0" />
+      <Insets bottom="40.0" left="50.0" right="60.0" top="35.0" />
    </padding>
 </VBox>
