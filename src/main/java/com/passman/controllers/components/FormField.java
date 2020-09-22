@@ -23,7 +23,7 @@ public class FormField extends AnchorPane {
     @FXML
     public void initialize() {
         label.setText(labelText);
-        textField.setText(null);
+        textField.setPromptText(null);
     }
 
     public String getLabelText() {

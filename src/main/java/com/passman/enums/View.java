@@ -3,9 +3,10 @@ package com.passman.enums;
 import java.net.URL;
 
 public enum View {
-    LOGIN("login");
+    LOGIN("login"),
+    SIGN_UP("sign-up");
 
-    private String name;
+    private final String name;
 
     View(String name) {
         this.name = name;

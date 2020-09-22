@@ -20,6 +20,12 @@ public class NavigationUtils {
         stage.centerOnScreen();
         stage.setTitle("Passman");
         stage.show();
+    }
 
+    public static void push(View view) {
+        Scene scene = FileUtils.loadScene(view);
+        sceneStack.push(scene);
+
+        stage.setScene(scene);
     }
 }
