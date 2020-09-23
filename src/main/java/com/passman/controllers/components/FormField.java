@@ -17,12 +17,19 @@ public class FormField extends AnchorPane {
     @FXML PasswordField passwordField;
 
     private final String labelText;
-    private final Boolean obscureText;
+    private final boolean obscureText;
+    private final boolean required;
+
     private Validable validator;
 
-    public FormField(@NamedArg("labelText") String labelText, @NamedArg("obscureText") boolean obscureText) {
+    public FormField(
+            @NamedArg("labelText") String labelText,
+            @NamedArg("obscureText") boolean obscureText,
+            @NamedArg("required") boolean required) {
+
         this.labelText = labelText;
         this.obscureText = obscureText;
+        this.required = required;
 
         FileUtils.injectComponentController(Component.FORM_FIELD, this);
     }
@@ -41,16 +48,30 @@ public class FormField extends AnchorPane {
     }
 
     public boolean validate() {
-        String errorMessage = validator.validate(textField.getText());
+        String text = textField.getText();
+        String errorMessage;
+
+        if (required && text.isEmpty() || text.isBlank()) {
+            errorMessage = "This field is required.";
+        } else {
+            errorMessage = validator.validate(text);
+        }
+
         errorLabel.setText(errorMessage);
 
         boolean isValid = errorMessage == null;
         return isValid;
     }
 
+    public String getText() {
+        return textField.getText();
+    }
+
+    /*
     public String getLabelText() {
         return labelText;
     }
+    */
 
     public void setValidator(Validable validator) {
         this.validator = validator;

@@ -16,39 +16,7 @@ public class SignUp {
     public void initialize() {
         form = new Form(usernameField, passwordField, confirmPasswordField);
 
-        usernameField.setValidator(value -> {
-            if (value == null) {
-                return "This field is required.";
-            }
-
-            String parsedValue = value.strip().toLowerCase();
-
-            if (parsedValue.length() < 3) {
-                return "Your username must have at least 3 characters.";
-            }
-
-            if (!parsedValue.matches("^[a-z0-9]*$")) {
-                return "Your username must only contain letters and numbers.";
-            };
-
-            return null;
-        });
-
-        passwordField.setValidator(value -> {
-            if (value.isEmpty()) {
-                return "This field is required.";
-            }
-
-            return null;
-        });
-
-        confirmPasswordField.setValidator(value -> {
-            if (value.isEmpty()) {
-                return "This field is required.";
-            }
-
-            return null;
-        });
+        injectValidators();
     }
 
     @FXML
@@ -61,5 +29,44 @@ public class SignUp {
     @FXML
     public void cancelButtonClicked() {
         NavigationUtils.pop();
+    }
+
+    private void injectValidators() {
+        int USERNAME_MINIMAL_LENGTH = 3;
+        int PASSWORD_MINIMAL_LENGTH = 4;
+
+        usernameField.setValidator(value -> {
+            String parsedValue = value.strip().toLowerCase();
+
+            if (parsedValue.length() < USERNAME_MINIMAL_LENGTH) {
+                return "Your username must have at least " + USERNAME_MINIMAL_LENGTH + " characters.";
+            }
+
+            if (!parsedValue.matches("^[a-z0-9]*$")) {
+                return "Your username must only contain letters and numbers.";
+            };
+
+            return null;
+        });
+
+        passwordField.setValidator(value -> {
+            if (value.length() < PASSWORD_MINIMAL_LENGTH) {
+                return "Your password must have at least " + PASSWORD_MINIMAL_LENGTH + " characters.";
+            }
+
+            return null;
+        });
+
+        confirmPasswordField.setValidator(value -> {
+            if (value.length() < PASSWORD_MINIMAL_LENGTH) {
+                return "Your password must have at least " + PASSWORD_MINIMAL_LENGTH + " characters.";
+            }
+
+            if (!value.equals(passwordField.getText())) {
+                return "The passwords don't match.";
+            }
+
+            return null;
+        });
     }
 }

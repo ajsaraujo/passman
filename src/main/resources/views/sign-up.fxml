@@ -16,13 +16,13 @@
             <Insets bottom="15.0" />
          </VBox.margin>
       </Label>
-      <FormField fx:id="usernameField" labelText="Username:" prefHeight="87.0" prefWidth="375.0" VBox.vgrow="ALWAYS">
+      <FormField fx:id="usernameField" labelText="Username:" required="true" prefHeight="87.0" prefWidth="375.0" VBox.vgrow="ALWAYS">
          <VBox.margin>
             <Insets />
          </VBox.margin>
       </FormField>
-      <FormField fx:id="passwordField" labelText="Password:" obscureText="true"/>
-      <FormField fx:id="confirmPasswordField" labelText="Confirm Password:" obscureText="true">
+      <FormField fx:id="passwordField" labelText="Password:" required="true" obscureText="true"/>
+      <FormField fx:id="confirmPasswordField" labelText="Confirm Password:" required="true" obscureText="true">
          <padding>
             <Insets bottom="25.0" />
          </padding>
