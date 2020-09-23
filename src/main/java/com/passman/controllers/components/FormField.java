@@ -32,7 +32,7 @@ public class FormField extends AnchorPane {
     public boolean validate() {
         String errorMessage = validator.validate(textField.getText());
         errorLabel.setText(errorMessage);
-
+        
         boolean isValid = errorMessage == null;
         return isValid;
     }

@@ -8,7 +8,7 @@
 
 .error-label {
     -fx-text-fill: #d32f2f;
-    -fx-font-size: 20px;
+    -fx-font-size: 14px;
 }
 
 .hyperlink:visited {
