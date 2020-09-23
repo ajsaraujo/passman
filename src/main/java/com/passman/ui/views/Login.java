@@ -1,4 +1,4 @@
-package com.passman.controllers.views;
+package com.passman.ui.views;
 
 import com.passman.enums.View;
 import com.passman.utils.NavigationUtils;

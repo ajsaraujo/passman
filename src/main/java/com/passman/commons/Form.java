@@ -1,6 +1,6 @@
 package com.passman.commons;
 
-import com.passman.controllers.components.FormField;
+import com.passman.ui.components.FormField;
 
 public class Form {
     FormField[] fields;

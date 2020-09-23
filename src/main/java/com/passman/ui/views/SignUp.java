@@ -1,7 +1,7 @@
-package com.passman.controllers.views;
+package com.passman.ui.views;
 
 import com.passman.commons.Form;
-import com.passman.controllers.components.FormField;
+import com.passman.ui.components.FormField;
 import com.passman.utils.NavigationUtils;
 import javafx.fxml.FXML;
 

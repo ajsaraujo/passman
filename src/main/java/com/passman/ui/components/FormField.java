@@ -1,4 +1,4 @@
-package com.passman.controllers.components;
+package com.passman.ui.components;
 
 import com.passman.commons.Validable;
 import com.passman.enums.Component;
@@ -49,10 +49,12 @@ public class FormField extends AnchorPane {
 
     public boolean validate() {
         String text = textField.getText();
-        String errorMessage;
+        String errorMessage = null;
 
-        if (required && text.isEmpty() || text.isBlank()) {
-            errorMessage = "This field is required.";
+        if (text.isEmpty() || text.isBlank()) {
+            if (required) {
+                errorMessage = "This field is required.";
+            }
         } else {
             errorMessage = validator.validate(text);
         }
@@ -67,13 +69,20 @@ public class FormField extends AnchorPane {
         return textField.getText();
     }
 
-    /*
-    public String getLabelText() {
-        return labelText;
-    }
-    */
-
     public void setValidator(Validable validator) {
         this.validator = validator;
     }
+
+    // Accessors for test purposes
+    public Label getLabel() {
+        return label;
+    }
+
+    public Label getErrorLabel() {
+        return errorLabel;
+    }
+
+    public TextField getTextField() { return textField; }
+
+    public TextField getPasswordField() { return passwordField; }
 }
