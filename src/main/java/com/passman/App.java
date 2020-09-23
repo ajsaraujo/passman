@@ -5,9 +5,10 @@
  */
 package com.passman;
 
+import com.passman.commons.abstracts.ViewController;
 import com.passman.enums.View;
+import com.passman.commons.Navigator;
 import com.passman.utils.FileUtils;
-import com.passman.utils.NavigationUtils;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -15,7 +16,10 @@ import javafx.stage.Stage;
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
-        NavigationUtils.init(primaryStage, View.LOGIN);
+        Navigator navigator = new Navigator();
+        navigator.init(primaryStage, View.LOGIN);
+
+        ViewController.setNavigator(navigator);
     }
 
     public static void main(String[] args) {

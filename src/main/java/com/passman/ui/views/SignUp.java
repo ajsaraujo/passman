@@ -1,11 +1,12 @@
 package com.passman.ui.views;
 
 import com.passman.commons.Form;
+import com.passman.commons.abstracts.ViewController;
 import com.passman.ui.components.FormField;
-import com.passman.utils.NavigationUtils;
+import com.passman.commons.Navigator;
 import javafx.fxml.FXML;
 
-public class SignUp {
+public class SignUp extends ViewController {
     @FXML FormField usernameField;
     @FXML FormField passwordField;
     @FXML FormField confirmPasswordField;
@@ -22,13 +23,13 @@ public class SignUp {
     @FXML
     public void confirmButtonClicked() {
         if (form.validate()) {
-            NavigationUtils.pop();
+            navigator.pop();
         }
     }
 
     @FXML
     public void cancelButtonClicked() {
-        NavigationUtils.pop();
+        navigator.pop();
     }
 
     private void injectValidators() {

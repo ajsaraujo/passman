@@ -1,35 +1,36 @@
-package com.passman.utils;
+package com.passman.commons;
 
 import com.passman.enums.View;
+import com.passman.utils.FileUtils;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.util.Stack;
 
-public class NavigationUtils {
-    private static Stage stage;
-    private static Stack<Scene> sceneStack = new Stack();
+public class Navigator {
+    private Stage stage;
+    private final Stack<Scene> sceneStack = new Stack<>();
 
-    public static void init(Stage stage, View view) {
-        NavigationUtils.stage = stage;
+    public void init(Stage stage, View view) {
+        this.stage = stage;
 
         Scene scene = FileUtils.loadScene(view);
         sceneStack.push(scene);
 
         stage.setScene(scene);
-        stage.centerOnScreen();
         stage.setTitle("Passman");
+        stage.centerOnScreen();
         stage.show();
     }
 
-    public static void push(View view) {
+    public void push(View view) {
         Scene scene = FileUtils.loadScene(view);
-        sceneStack.push(scene);
 
+        sceneStack.push(scene);
         stage.setScene(scene);
     }
 
-    public static void pop() {
+    public void pop() {
         sceneStack.pop();
         stage.setScene(sceneStack.peek());
     }

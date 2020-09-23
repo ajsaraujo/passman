@@ -1,6 +1,6 @@
 package com.passman.ui.components;
 
-import com.passman.commons.Validable;
+import com.passman.commons.interfaces.Validable;
 import com.passman.enums.Component;
 import com.passman.utils.FileUtils;
 import javafx.beans.NamedArg;

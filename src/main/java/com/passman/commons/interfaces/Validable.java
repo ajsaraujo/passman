@@ -1,4 +1,4 @@
-package com.passman.commons;
+package com.passman.commons.interfaces;
 
 public interface Validable {
     /**

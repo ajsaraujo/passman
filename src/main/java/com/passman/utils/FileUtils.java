@@ -1,10 +1,10 @@
 package com.passman.utils;
 
+import com.passman.commons.Navigator;
+import com.passman.commons.abstracts.ViewController;
 import com.passman.enums.Component;
 import com.passman.enums.View;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -18,7 +18,7 @@ public class FileUtils {
     public static Scene loadScene(View view) {
         try {
             Parent root = FXMLLoader.load(view.getUrl());
-            Scene styledScene = style(new Scene(root));
+            Scene styledScene = styled(new Scene(root));
 
             return styledScene;
         } catch (IOException exception) {
@@ -42,7 +42,7 @@ public class FileUtils {
         }
     }
 
-    private static Scene style(Scene scene) {
+    private static Scene styled(Scene scene) {
         JMetro jMetro = new JMetro(Style.LIGHT);
         jMetro.setScene(scene);
 

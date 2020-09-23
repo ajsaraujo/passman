@@ -1,12 +1,13 @@
 package com.passman.ui.views;
 
+import com.passman.commons.abstracts.ViewController;
 import com.passman.enums.View;
-import com.passman.utils.NavigationUtils;
+import com.passman.commons.Navigator;
 import javafx.fxml.FXML;
 
-public class Login {
+public class Login extends ViewController {
     @FXML
     public void hyperlinkClicked() {
-        NavigationUtils.push(View.SIGN_UP);
+        navigator.push(View.SIGN_UP);
     }
 }
