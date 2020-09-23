@@ -28,4 +28,9 @@ public class NavigationUtils {
 
         stage.setScene(scene);
     }
+
+    public static void pop() {
+        sceneStack.pop();
+        stage.setScene(sceneStack.peek());
+    }
 }

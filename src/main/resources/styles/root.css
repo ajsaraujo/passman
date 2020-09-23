@@ -6,6 +6,11 @@
     -fx-font-family: Verdana;
 }
 
+.error-label {
+    -fx-text-fill: #d32f2f;
+    -fx-font-size: 20px;
+}
+
 .hyperlink:visited {
     -fx-underline: false;
     -fx-border-width: 0;

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.passman.controllers.views.SignUp">
    <children>
       <Label text="Sign Up">
          <font>
@@ -16,21 +16,21 @@
             <Insets bottom="35.0" />
          </VBox.margin>
       </Label>
-      <FormField labelText="Username:" prefHeight="87.0" prefWidth="306.0" VBox.vgrow="ALWAYS">
+      <FormField fx:id="usernameField" labelText="Username:" prefHeight="87.0" prefWidth="306.0" VBox.vgrow="ALWAYS">
          <VBox.margin>
             <Insets />
          </VBox.margin>
       </FormField>
-      <FormField labelText="Password:" />
-      <FormField labelText="Confirm Password:">
+      <FormField fx:id="passwordField" labelText="Password:" />
+      <FormField fx:id="confirmPasswordField" labelText="Confirm Password:">
          <padding>
-            <Insets bottom="10.0" />
+            <Insets bottom="25.0" />
          </padding>
       </FormField>
       <HBox spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="118.0" styleClass="secondary-button" text="Cancel" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="168.0" text="Confirm" />
+            <Button mnemonicParsing="false" onAction="#cancelButtonClicked" prefHeight="42.0" prefWidth="118.0" styleClass="secondary-button" text="Cancel" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#confirmButtonClicked" prefHeight="42.0" prefWidth="168.0" text="Confirm" />
          </children>
       </HBox>
    </children>

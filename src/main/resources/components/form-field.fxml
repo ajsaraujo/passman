@@ -15,7 +15,7 @@
          <font>
             <Font size="16.0" />
          </font></TextField>
-      <Label prefHeight="30.0" prefWidth="600.0" text="Error message" textFill="#d32f2f" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="96.0">
+      <Label fx:id="errorLabel" prefHeight="30.0" prefWidth="600.0" styleClass="error-label" textFill="#d32f2f" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="96.0">
          <font>
             <Font size="20.0" />
          </font>

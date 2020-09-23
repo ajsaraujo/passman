@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 
 public class Login {
     @FXML
-    public void goToSignUpView() {
+    public void hyperlinkClicked() {
         NavigationUtils.push(View.SIGN_UP);
     }
 }
