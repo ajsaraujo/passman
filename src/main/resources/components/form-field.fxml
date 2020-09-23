@@ -15,6 +15,10 @@
          <font>
             <Font size="16.0" />
          </font></TextField>
+      <PasswordField fx:id="passwordField" layoutY="30.0" prefHeight="45.0" prefWidth="600.0" promptText="Prompt Text" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+         <font>
+            <Font size="16.0" />
+         </font></PasswordField>
       <Label fx:id="errorLabel" prefHeight="30.0" prefWidth="600.0" styleClass="error-label" textFill="#d32f2f" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="96.0">
          <font>
             <Font size="14.0" />

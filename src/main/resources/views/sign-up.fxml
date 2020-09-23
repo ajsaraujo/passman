@@ -21,8 +21,8 @@
             <Insets />
          </VBox.margin>
       </FormField>
-      <FormField fx:id="passwordField" labelText="Password:" />
-      <FormField fx:id="confirmPasswordField" labelText="Confirm Password:">
+      <FormField fx:id="passwordField" labelText="Password:" obscureText="true"/>
+      <FormField fx:id="confirmPasswordField" labelText="Confirm Password:" obscureText="true">
          <padding>
             <Insets bottom="25.0" />
          </padding>

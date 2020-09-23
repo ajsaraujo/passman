@@ -6,6 +6,7 @@ import com.passman.utils.FileUtils;
 import javafx.beans.NamedArg;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -13,12 +14,15 @@ public class FormField extends AnchorPane {
     @FXML Label label;
     @FXML Label errorLabel;
     @FXML TextField textField;
+    @FXML PasswordField passwordField;
 
     private final String labelText;
+    private final Boolean obscureText;
     private Validable validator;
 
-    public FormField(@NamedArg("labelText") String labelText) {
+    public FormField(@NamedArg("labelText") String labelText, @NamedArg("obscureText") boolean obscureText) {
         this.labelText = labelText;
+        this.obscureText = obscureText;
 
         FileUtils.injectComponentController(Component.FORM_FIELD, this);
     }
@@ -27,12 +31,19 @@ public class FormField extends AnchorPane {
     public void initialize() {
         label.setText(labelText);
         textField.setPromptText(null);
+
+        if (obscureText) {
+            textField.setVisible(false);
+            textField = passwordField;
+        } else {
+            passwordField.setVisible(false);
+        }
     }
 
     public boolean validate() {
         String errorMessage = validator.validate(textField.getText());
         errorLabel.setText(errorMessage);
-        
+
         boolean isValid = errorMessage == null;
         return isValid;
     }
