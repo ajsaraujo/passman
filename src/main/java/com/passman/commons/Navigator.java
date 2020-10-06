@@ -34,4 +34,9 @@ public class Navigator {
         sceneStack.pop();
         stage.setScene(sceneStack.peek());
     }
+
+    public void pushReplacement(View view) {
+        sceneStack.clear();
+        push(view);
+    };
 }

@@ -79,4 +79,24 @@ public class NavigatorTest extends ApplicationTest {
             assertEquals(stage.getTitle(), "Passman");
         });
     }
+
+    @Test
+    public void pushReplacementShouldClearAndPush() {
+        Platform.runLater(() -> {
+            Scene scene = new Scene(new Pane());
+            Stack<Scene> stack = new Stack<>();
+            Stage stage = new Stage();
+
+            for (int i = 0; i < 3; i++) {
+                stack.push(scene);
+            }
+
+            Navigator navigator = spy(new Navigator(stage, stack));
+
+            navigator.pushReplacement(mockView);
+
+            assertEquals(1, stack.size());
+            verify(navigator, times(1)).push(any());
+        });
+    }
 }
