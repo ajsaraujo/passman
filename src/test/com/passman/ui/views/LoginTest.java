@@ -17,16 +17,12 @@ import java.util.Stack;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class LoginTest extends ApplicationTest {
-    private Navigator navigator;
-
+public class LoginTest extends ControllerTest {
     @Override
     public void start(Stage primaryStage) throws Exception {
+        super.start(primaryStage);
+
         View view = new View("login");
-
-        this.navigator = spy(new Navigator(primaryStage, new Stack<>()));
-
-        // Pushing two times so the stack doesn't get empty after a pop.
         navigator.push(view);
     }
 
@@ -38,12 +34,5 @@ public class LoginTest extends ApplicationTest {
 
             verify(navigator, times(1)).push(any());
         });
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        FxToolkit.hideStage();
-        release(new KeyCode[]{});
-        release(new MouseButton[]{});
     }
 }
