@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import java.util.Map;
 
 import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -49,9 +50,9 @@ public class SignUpTest extends ControllerTest {
     }
 
     @Test
-    public void shouldPopIfEverythingIsAlright() {
+    public void shouldPushSignUpSuccessIfEverythingIsAlright() {
         fillForm("banana", "banana", "banana");
-        verify(navigator, times(1)).pop();
+        verify(navigator, times(1)).push(any());
     }
 
     private void fillForm(String usernameValue, String passwordValue, String confirmPasswordValue) {

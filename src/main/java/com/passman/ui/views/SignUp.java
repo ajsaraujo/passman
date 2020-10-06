@@ -1,6 +1,7 @@
 package com.passman.ui.views;
 
 import com.passman.commons.Form;
+import com.passman.commons.View;
 import com.passman.commons.abstracts.ViewController;
 import com.passman.ui.components.FormField;
 import com.passman.commons.Navigator;
@@ -23,7 +24,7 @@ public class SignUp extends ViewController {
     @FXML
     public void confirmButtonClicked() {
         if (form.validate()) {
-            navigator.pop();
+            navigator.push(new View("sign-up-success"));
         }
     }
 
