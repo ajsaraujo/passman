@@ -18,7 +18,7 @@ public class NavigatorTest extends ApplicationTest {
     private Scene mockScene;
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage primaryStage) {
         this.mockView = mock(View.class);
         this.mockScene = new Scene(new Pane());
 

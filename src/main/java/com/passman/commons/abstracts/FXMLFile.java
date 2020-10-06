@@ -13,7 +13,7 @@ import java.net.URL;
 public abstract class FXMLFile {
     protected URL path;
 
-    public final Scene loadScene() {
+    public Scene loadScene() {
         try {
             Parent root = FXMLLoader.load(path);
             Scene scene = new Scene(root);
