@@ -32,8 +32,8 @@
       </FormField>
       <HBox alignment="TOP_RIGHT" spacing="15.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#cancelButtonClicked" prefHeight="42.0" prefWidth="118.0" styleClass="secondary-button" text="Cancel" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#confirmButtonClicked" prefHeight="42.0" prefWidth="129.0" text="Confirm" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClicked" prefHeight="42.0" prefWidth="118.0" styleClass="secondary-button" text="Cancel" />
+            <Button fx:id="confirmButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#confirmButtonClicked" prefHeight="42.0" prefWidth="129.0" text="Confirm" />
          </children>
       </HBox>
    </children>
