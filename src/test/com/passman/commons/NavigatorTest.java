@@ -11,8 +11,7 @@ import org.testfx.framework.junit.ApplicationTest;
 import java.util.Stack;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class NavigatorTest extends ApplicationTest {
     private View mockView;
@@ -38,6 +37,46 @@ public class NavigatorTest extends ApplicationTest {
             assertEquals(stage.getScene(), mockScene);
 
             assertEquals(stack.peek(), mockScene);
+        });
+    }
+
+    @Test
+    public void popShouldPopAndSetTopScene() {
+        Platform.runLater(() -> {
+            Scene bottomScene = new Scene(new Pane());
+            Scene topScene = new Scene(new Pane());
+
+            Stack<Scene> stack = new Stack<>();
+            Stage stage = new Stage();
+
+            stack.push(bottomScene);
+            stack.push(topScene);
+
+            Navigator navigator = new Navigator(stage, stack);
+
+            navigator.pop();
+
+            assertEquals(stack.peek(), bottomScene);
+            assertEquals(stack.peek(), stage.getScene());
+        });
+    }
+
+    @Test
+    public void renderShouldRenderCurrentScene() {
+        Platform.runLater(() -> {
+            Scene scene = new Scene(new Pane());
+            Stack<Scene> stack = new Stack<>();
+            Stage stage = new Stage();
+
+            stack.push(scene);
+
+            Navigator navigator = new Navigator(stage, stack);
+
+            navigator.render();
+
+            // We can't test if .show() is called because it is final and thus can't be spied.
+            assertEquals(stage.getScene(), scene);
+            assertEquals(stage.getTitle(), "Passman");
         });
     }
 }
