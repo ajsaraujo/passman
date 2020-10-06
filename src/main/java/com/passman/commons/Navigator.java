@@ -7,17 +7,14 @@ import java.util.Stack;
 
 public class Navigator {
     private Stage stage;
-    private final Stack<Scene> sceneStack = new Stack<>();
+    private final Stack<Scene> sceneStack;
 
-    public Navigator(Stage stage, String firstViewFileName) {
+    public Navigator(Stage stage, Stack<Scene> sceneStack) {
         this.stage = stage;
-
-        View firstView = new View(firstViewFileName);
-        Scene scene = firstView.loadScene();
-        sceneStack.push(scene);
+        this.sceneStack = sceneStack;
     }
 
-    public void renderView() {
+    public void render() {
         Scene scene = sceneStack.peek();
 
         stage.setScene(scene);
@@ -26,11 +23,10 @@ public class Navigator {
         stage.show();
     }
 
-    public void push(String viewName) {
-        View view = new View(viewName);
+    public void push(View view) {
         Scene scene = view.loadScene();
-        sceneStack.push(scene);
 
+        sceneStack.push(scene);
         stage.setScene(scene);
     }
 
