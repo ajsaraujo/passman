@@ -6,18 +6,15 @@
 package com.passman;
 
 import com.passman.commons.abstracts.ViewController;
-import com.passman.enums.View;
 import com.passman.commons.Navigator;
-import com.passman.utils.FileUtils;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
-        Navigator navigator = new Navigator();
-        navigator.init(primaryStage, View.LOGIN);
+        Navigator navigator = new Navigator(primaryStage, "login");
+        navigator.renderView();
 
         ViewController.setNavigator(navigator);
     }

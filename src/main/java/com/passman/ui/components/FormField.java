@@ -1,8 +1,8 @@
 package com.passman.ui.components;
 
 import com.passman.commons.interfaces.Validable;
-import com.passman.enums.Component;
-import com.passman.utils.FileUtils;
+import com.passman.commons.Component;
+import com.passman.commons.abstracts.FXMLFile;
 import javafx.beans.NamedArg;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -31,7 +31,8 @@ public class FormField extends AnchorPane {
         this.obscureText = obscureText;
         this.required = required;
 
-        FileUtils.injectComponentController(Component.FORM_FIELD, this);
+        Component fxmlFile = new Component("form-field");
+        fxmlFile.injectController(this);
     }
 
     @FXML
