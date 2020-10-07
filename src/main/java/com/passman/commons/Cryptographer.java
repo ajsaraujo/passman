@@ -11,7 +11,6 @@ import java.util.Base64;
 public class Cryptographer {
     private final Charset UTF8 = StandardCharsets.UTF_8;
     private SecretKeySpec keySpec;
-    private byte[] key;
 
     public Cryptographer(String plainTextKey) {
         try {
@@ -19,8 +18,8 @@ public class Cryptographer {
 
             byte[] bytes = plainTextKey.getBytes(UTF8);
             byte[] digestedBytes = sha.digest(bytes);
+            byte[] key = Arrays.copyOf(digestedBytes, 16);
 
-            key = Arrays.copyOf(digestedBytes, 16);
             keySpec = new SecretKeySpec(key, "AES");
         } catch (Exception exception) {
             exception.printStackTrace();
