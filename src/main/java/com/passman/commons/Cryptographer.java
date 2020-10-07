@@ -45,6 +45,19 @@ public class Cryptographer {
     }
 
     public String decrypt(String encryptedText) {
-        return encryptedText;
+        try {
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
+            cipher.init(Cipher.DECRYPT_MODE, keySpec);
+
+            Base64.Decoder decoder = Base64.getDecoder();
+
+            byte[] encryptedBytes = decoder.decode(encryptedText);
+            byte[] decryptedBytes = cipher.doFinal(encryptedBytes);
+
+            return new String(decryptedBytes);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return null;
+        }
     }
 }
