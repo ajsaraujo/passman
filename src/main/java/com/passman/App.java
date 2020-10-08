@@ -9,7 +9,6 @@ import com.passman.commons.View;
 import com.passman.commons.abstracts.ViewController;
 import com.passman.commons.Navigator;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.util.Stack;
@@ -17,7 +16,7 @@ import java.util.Stack;
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
-        Navigator navigator = new Navigator(primaryStage, new Stack<Scene>());
+        Navigator navigator = new Navigator(primaryStage, new Stack<>());
 
         ViewController.setNavigator(navigator);
 

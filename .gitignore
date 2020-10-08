@@ -2,6 +2,7 @@
 *.imll
 temp.txt
 target/*
+*.sqlite
 
 # Eclipse artifacts
 .project
