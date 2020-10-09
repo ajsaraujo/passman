@@ -5,40 +5,41 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="504.0" prefWidth="450.0" styleClass="background" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.passman.ui.views.Login">
+<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.passman.ui.views.Login">
    <children>
-      <Label layoutX="35.0" layoutY="61.0" text="Welcome back!" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="61.0">
+      <Label fx:id="titleLabel" text="Passman">
          <font>
-            <Font name="Verdana" size="30.0" />
+            <Font size="40.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="45.0" />
+         </VBox.margin>
+      </Label>
+      <VBox spacing="10.0">
+         <children>
+            <Button fx:id="createFileButton" mnemonicParsing="false" styleClass="transparent-button" text="Create new file">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <Button fx:id="importFileButton" mnemonicParsing="false" styleClass="transparent-button" text="Import existing file">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="45.0" />
+         </VBox.margin>
+      </VBox>
+      <Label text="v0.0.1" textFill="#717171">
+         <VBox.margin>
+            <Insets bottom="-20.0" />
+         </VBox.margin>
+         <font>
+            <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="35.0" layoutY="149.0" prefHeight="46.0" prefWidth="385.0" promptText="Username" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <padding>
-            <Insets left="15.0" />
-         </padding>
-      </TextField>
-      <TextField layoutX="35.0" layoutY="227.0" prefHeight="46.0" prefWidth="385.0" promptText="Password" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <padding>
-            <Insets left="15.0" />
-         </padding>
-      </TextField>
-      <Button layoutX="35.0" layoutY="327.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="380.0" text="Sign In" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font></Button>
-      <Hyperlink fx:id="hyperlink" alignment="CENTER" layoutY="398.0" onAction="#hyperlinkClicked" prefHeight="68.0" prefWidth="450.0" text="Doesn't have an account yet? Create one" textAlignment="CENTER" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Hyperlink>
    </children>
-</AnchorPane>
+   <padding>
+      <Insets bottom="45.0" left="60.0" right="60.0" top="35.0" />
+   </padding>
+</VBox>

@@ -55,3 +55,13 @@
     -fx-border-style: solid;
     -fx-border-color: #3F51B5;
 }
+
+.transparent-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+}
+
+.transparent-button:hover {
+    -fx-text-fill: #448AFF;
+    -fx-background-color: transparent;
+}
