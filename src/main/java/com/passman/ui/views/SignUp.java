@@ -1,20 +1,34 @@
 package com.passman.ui.views;
 
 import com.passman.commons.Form;
-import com.passman.commons.View;
+import com.passman.commons.ValidationResult;
 import com.passman.commons.abstracts.ViewController;
 import com.passman.ui.components.FormField;
+import com.passman.utils.FileUtils;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
+import java.io.File;
 
 public class SignUp extends ViewController {
     @FXML FormField nameField;
     @FXML FormField passwordField;
     @FXML FormField confirmPasswordField;
+    @FXML Button searchFileButton;
+    @FXML TextField fileLocationField;
+    @FXML Label locationErrorLabel;
 
     private Form form;
 
     @FXML
     public void initialize() {
+        fileLocationField.setEditable(false);
+        fileLocationField.setText(FileUtils.getAppFolder());
+
+        locationErrorLabel.setVisible(false);
+
         form = new Form(nameField, passwordField, confirmPasswordField);
 
         injectValidators();
@@ -22,9 +36,37 @@ public class SignUp extends ViewController {
 
     @FXML
     public void confirmButtonClicked() {
-        if (form.validate()) {
-            navigator.push(new View("sign-up-success"));
+        ValidationResult result = validateLocation();
+
+        if (result.isValid()) {
+            locationErrorLabel.setVisible(false);
+        } else {
+            locationErrorLabel.setVisible(true);
+            locationErrorLabel.setText(result.getMessage());
         }
+
+        if (form.validate() && result.isValid()) {
+            navigator.pop();
+        }
+    }
+
+    private ValidationResult validateLocation() {
+        String path = fileLocationField.getText();
+
+        if (path.isEmpty() || path.isBlank()) {
+            return new ValidationResult("This field is required.", false);
+        }
+
+        if (!FileUtils.isValid(new File(path))) {
+            return new ValidationResult("File path is not valid.", false);
+        }
+
+        return new ValidationResult(true);
+    }
+
+    @FXML
+    public void searchFileButtonClicked() {
+
     }
 
     @FXML

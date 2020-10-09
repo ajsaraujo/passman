@@ -4,11 +4,7 @@ import com.passman.commons.View;
 import javafx.stage.Stage;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-
 import java.util.Map;
-
-import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -50,14 +46,14 @@ public class SignUpTest extends ControllerTest {
     }
 
     @Test
-    public void shouldPushSignUpSuccessIfEverythingIsAlright() {
+    public void shouldPopIfEverythingsAlright() {
         fillForm("banana", "banana", "banana");
-        verify(navigator, times(1)).push(any());
+        verify(navigator, times(1)).pop();
     }
 
-    private void fillForm(String usernameValue, String passwordValue, String confirmPasswordValue) {
+    private void fillForm(String nameValue, String passwordValue, String confirmPasswordValue) {
         Map<String, String> fields = Map.of(
-                "#usernameField", usernameValue,
+                "#nameField", nameValue,
                 "#passwordField", passwordValue,
                 "#confirmPasswordField", confirmPasswordValue
         );
