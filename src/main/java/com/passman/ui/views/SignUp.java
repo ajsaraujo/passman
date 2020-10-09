@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -28,10 +29,10 @@ public class SignUp extends ViewController {
 
     @FXML
     public void initialize() {
-        String appFolder = FileUtils.getAppFolder();
-        selectedFile = new File(appFolder);
+        String filePath = FileUtils.getAppFolder() + File.separatorChar + "save.pman";
+        selectedFile = new File(filePath);
 
-        fileLocationField.setText(appFolder);
+        fileLocationField.setText(filePath);
         fileLocationField.setEditable(false);
 
         locationErrorLabel.setVisible(false);
@@ -73,8 +74,14 @@ public class SignUp extends ViewController {
 
     @FXML
     public void searchFileButtonClicked() throws IOException {
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        File selectedFile = directoryChooser.showDialog(new Stage());
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter pmanExtension = new FileChooser.ExtensionFilter("Passman Files (*.pman)", ".pman");
+
+        fileChooser.setInitialFileName("save.pman");
+        fileChooser.getExtensionFilters().add(pmanExtension);
+        fileChooser.setSelectedExtensionFilter(pmanExtension);
+
+        File selectedFile = fileChooser.showSaveDialog(new Stage());
 
         if (selectedFile != null) {
             this.selectedFile = selectedFile;
