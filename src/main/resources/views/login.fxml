@@ -17,7 +17,7 @@
       </Label>
       <VBox spacing="10.0">
          <children>
-            <Button fx:id="createFileButton" mnemonicParsing="false" styleClass="transparent-button" text="Create new file">
+            <Button fx:id="createFileButton" onAction="#createFileClicked" mnemonicParsing="false" styleClass="transparent-button" text="Create new file">
                <font>
                   <Font size="16.0" />
                </font></Button>

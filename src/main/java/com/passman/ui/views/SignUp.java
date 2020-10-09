@@ -4,11 +4,10 @@ import com.passman.commons.Form;
 import com.passman.commons.View;
 import com.passman.commons.abstracts.ViewController;
 import com.passman.ui.components.FormField;
-import com.passman.commons.Navigator;
 import javafx.fxml.FXML;
 
 public class SignUp extends ViewController {
-    @FXML FormField usernameField;
+    @FXML FormField nameField;
     @FXML FormField passwordField;
     @FXML FormField confirmPasswordField;
 
@@ -16,7 +15,7 @@ public class SignUp extends ViewController {
 
     @FXML
     public void initialize() {
-        form = new Form(usernameField, passwordField, confirmPasswordField);
+        form = new Form(nameField, passwordField, confirmPasswordField);
 
         injectValidators();
     }
@@ -37,7 +36,7 @@ public class SignUp extends ViewController {
         int USERNAME_MINIMAL_LENGTH = 3;
         int PASSWORD_MINIMAL_LENGTH = 4;
 
-        usernameField.setValidator(value -> {
+        nameField.setValidator(value -> {
             String parsedValue = value.strip().toLowerCase();
 
             if (parsedValue.length() < USERNAME_MINIMAL_LENGTH) {

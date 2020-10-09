@@ -8,7 +8,7 @@
 
 <VBox spacing="20.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.passman.ui.views.SignUp">
    <children>
-      <Label text="Sign Up">
+      <Label text="Create new Passman file">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
@@ -16,13 +16,13 @@
             <Insets bottom="15.0" />
          </VBox.margin>
       </Label>
-      <FormField fx:id="usernameField" labelText="Username:" required="true" prefHeight="87.0" prefWidth="375.0" VBox.vgrow="ALWAYS">
+      <FormField fx:id="nameField" labelText="Your name:" prefHeight="87.0" prefWidth="375.0" required="true" VBox.vgrow="ALWAYS">
          <VBox.margin>
             <Insets />
          </VBox.margin>
       </FormField>
-      <FormField fx:id="passwordField" labelText="Password:" required="true" obscureText="true"/>
-      <FormField fx:id="confirmPasswordField" labelText="Confirm Password:" required="true" obscureText="true">
+      <FormField fx:id="passwordField" labelText="Password:" obscureText="true" required="true" />
+      <FormField fx:id="confirmPasswordField" labelText="Confirm Password:" obscureText="true" required="true">
          <padding>
             <Insets bottom="25.0" />
          </padding>
