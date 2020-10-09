@@ -3,6 +3,7 @@ package com.passman.utils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -20,6 +21,23 @@ public class FileUtils {
             return new ImageView(image);
         } catch (Exception exception) {
             exception.printStackTrace();
+            return null;
+        }
+    }
+
+    public static boolean isValid(File file) {
+        try {
+            file.getCanonicalPath();
+            return true;
+        } catch (IOException exception) {
+            return false;
+        }
+    }
+
+    public static String getAppFolder() {
+        try {
+            return new File(".").getCanonicalPath();
+        } catch (IOException exception) {
             return null;
         }
     }
