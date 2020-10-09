@@ -9,8 +9,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 
 public class SignUp extends ViewController {
     @FXML FormField nameField;
@@ -21,11 +24,15 @@ public class SignUp extends ViewController {
     @FXML Label locationErrorLabel;
 
     private Form form;
+    private File selectedFile;
 
     @FXML
     public void initialize() {
+        String appFolder = FileUtils.getAppFolder();
+        selectedFile = new File(appFolder);
+
+        fileLocationField.setText(appFolder);
         fileLocationField.setEditable(false);
-        fileLocationField.setText(FileUtils.getAppFolder());
 
         locationErrorLabel.setVisible(false);
 
@@ -57,7 +64,7 @@ public class SignUp extends ViewController {
             return new ValidationResult("This field is required.", false);
         }
 
-        if (!FileUtils.isValid(new File(path))) {
+        if (!FileUtils.isValid(selectedFile)) {
             return new ValidationResult("File path is not valid.", false);
         }
 
@@ -65,8 +72,14 @@ public class SignUp extends ViewController {
     }
 
     @FXML
-    public void searchFileButtonClicked() {
+    public void searchFileButtonClicked() throws IOException {
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        File selectedFile = directoryChooser.showDialog(new Stage());
 
+        if (selectedFile != null) {
+            this.selectedFile = selectedFile;
+            fileLocationField.setText(selectedFile.getCanonicalPath());
+        }
     }
 
     @FXML
