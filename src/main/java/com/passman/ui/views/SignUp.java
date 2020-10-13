@@ -4,6 +4,7 @@ import com.passman.commons.Form;
 import com.passman.commons.ValidationResult;
 import com.passman.commons.abstracts.ViewController;
 import com.passman.ui.components.FormField;
+import com.passman.ui.dialogs.NewFileCreated;
 import com.passman.utils.FileUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -54,6 +55,8 @@ public class SignUp extends ViewController {
         }
 
         if (form.validate() && result.isValid()) {
+            NewFileCreated successDialog = new NewFileCreated();
+            successDialog.show();
             navigator.pop();
         }
     }

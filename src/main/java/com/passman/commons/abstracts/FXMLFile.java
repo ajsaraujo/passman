@@ -1,5 +1,6 @@
 package com.passman.commons.abstracts;
 
+import com.passman.utils.UIUtils;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,21 +19,11 @@ public abstract class FXMLFile {
             Parent root = FXMLLoader.load(path);
             Scene scene = new Scene(root);
 
-            return styled(scene);
+            return UIUtils.style(scene);
         } catch (IOException exception) {
             exception.printStackTrace();
 
             return new Scene(new Pane());
         }
-    }
-
-    private Scene styled(Scene scene) {
-        JMetro jMetro = new JMetro(Style.LIGHT);
-        jMetro.setScene(scene);
-
-        String rootStylesheet = FXMLFile.class.getResource("/styles/root.css").toString();
-        scene.getStylesheets().add(rootStylesheet);
-
-        return scene;
     }
 }
