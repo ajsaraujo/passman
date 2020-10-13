@@ -17,7 +17,7 @@ public class FormFieldTest extends ApplicationTest {
     private FormField validableField;
 
     @Override
-    public void start (Stage stage) throws Exception {
+    public void start (Stage stage) {
         usernameField = new FormField("Username", false, true);
         passwordField = new FormField("Password", true, true);
 

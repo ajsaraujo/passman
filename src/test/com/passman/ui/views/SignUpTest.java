@@ -1,10 +1,13 @@
 package com.passman.ui.views;
 
+import com.passman.ControllerTest;
 import com.passman.commons.View;
 import javafx.stage.Stage;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -46,9 +49,14 @@ public class SignUpTest extends ControllerTest {
     }
 
     @Test
-    public void shouldPopIfEverythingsAlright() {
+    public void shouldOpenADialogIfEverythingIsAlright() {
+        int numberOfWindowsBefore = robotContext().getWindowFinder().listWindows().size();
+
         fillForm("banana", "banana", "banana");
-        verify(navigator, times(1)).pop();
+
+        int numberOfWindowsNow = robotContext().getWindowFinder().listWindows().size();
+
+        assertEquals(numberOfWindowsNow, numberOfWindowsBefore + 1);
     }
 
     private void fillForm(String nameValue, String passwordValue, String confirmPasswordValue) {

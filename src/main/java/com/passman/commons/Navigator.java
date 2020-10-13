@@ -28,11 +28,13 @@ public class Navigator {
 
         sceneStack.push(scene);
         stage.setScene(scene);
+        stage.centerOnScreen();
     }
 
     public void pop() {
         sceneStack.pop();
         stage.setScene(sceneStack.peek());
+        stage.centerOnScreen();
     }
 
     public void pushReplacement(View view) {

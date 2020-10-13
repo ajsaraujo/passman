@@ -1,5 +1,6 @@
 package com.passman.ui.views;
 
+import com.passman.ControllerTest;
 import com.passman.commons.View;
 import javafx.stage.Stage;
 import org.junit.Test;

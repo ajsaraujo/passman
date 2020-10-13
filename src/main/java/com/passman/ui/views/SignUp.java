@@ -55,7 +55,7 @@ public class SignUp extends ViewController {
         }
 
         if (form.validate() && result.isValid()) {
-            NewFileCreated successDialog = new NewFileCreated();
+            NewFileCreated successDialog = new NewFileCreated(new Stage());
             successDialog.show();
             navigator.pop();
         }

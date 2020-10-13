@@ -15,7 +15,7 @@
          <font>
             <Font size="16.0" />
          </font></TextField>
-      <PasswordField fx:id="passwordField" layoutY="30.0" prefHeight="45.0" prefWidth="600.0" promptText="Prompt Text" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+      <PasswordField fx:id="passwordField" layoutY="30.0" prefHeight="45.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
          <font>
             <Font size="16.0" />
          </font></PasswordField>
