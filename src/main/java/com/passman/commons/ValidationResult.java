@@ -4,6 +4,8 @@ public class ValidationResult {
     private String message;
     private boolean isValid;
 
+    public ValidationResult() {};
+
     public ValidationResult(boolean isValid) {
         this.isValid = isValid;
     }

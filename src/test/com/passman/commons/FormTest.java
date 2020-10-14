@@ -19,7 +19,7 @@ public class FormTest extends ApplicationTest {
         validField2 = new FormField("Last name", false, false);
         validField3 = new FormField("Password", true, true);
 
-        validField3.setValidator(value -> { return null; });
+        validField3.setValidator(value -> new ValidationResult(true));
         validField3.getTextField().setText("123456abcde");
 
         invalidField = new FormField("Confirm Password", true, true);

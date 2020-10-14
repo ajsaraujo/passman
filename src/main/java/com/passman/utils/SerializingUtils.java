@@ -36,11 +36,11 @@ public class SerializingUtils {
             ObjectInputStream stream = createInputStream(filePath, cipher);
 
             SealedObject sealedObject = (SealedObject) stream.readObject();
-            User user = (User) sealedObject.getObject(cipher);
 
-            return user;
+            return (User) sealedObject.getObject(cipher);
         } catch (Exception exception) {
             exception.printStackTrace();
+            return null;
         }
     }
 

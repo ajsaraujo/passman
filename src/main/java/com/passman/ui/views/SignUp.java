@@ -3,9 +3,11 @@ package com.passman.ui.views;
 import com.passman.commons.Form;
 import com.passman.commons.ValidationResult;
 import com.passman.commons.abstracts.ViewController;
+import com.passman.models.User;
 import com.passman.ui.components.FormField;
 import com.passman.ui.dialogs.AlertDialog;
 import com.passman.utils.FileUtils;
+import com.passman.utils.SerializingUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -54,8 +56,14 @@ public class SignUp extends ViewController {
         }
 
         if (form.validate() && result.isValid()) {
+            String path = fileLocationField.getText();
+            String password = passwordField.getText();
+            User user = new User(nameField.getText());
+
+            SerializingUtils.serialize(user, password, path);
+
             AlertDialog successDialog = new AlertDialog(new Stage(), "New Passman file created",
-                    "New Passman file created at " + fileLocationField.getText() + ". Click Ok to proceed.",
+                    "New Passman file created at " + path + ". Click Ok to proceed.",
                     "Ok"
             );
             successDialog.show();
@@ -105,36 +113,50 @@ public class SignUp extends ViewController {
 
         nameField.setValidator(value -> {
             String parsedValue = value.strip().toLowerCase();
+            String errorMessage = null;
 
             if (parsedValue.length() < USERNAME_MINIMAL_LENGTH) {
-                return "Your username must have at least " + USERNAME_MINIMAL_LENGTH + " characters.";
+                errorMessage = "Your username must have at least " + USERNAME_MINIMAL_LENGTH + " characters.";
             }
 
             if (!parsedValue.matches("^[a-z0-9]*$")) {
-                return "Your username must only contain letters and numbers.";
+                errorMessage = "Your username must only contain letters and numbers.";
             };
 
-            return null;
+            if (errorMessage == null) {
+                return new ValidationResult(true);
+            }
+
+            return new ValidationResult(errorMessage, false);
         });
 
         passwordField.setValidator(value -> {
             if (value.length() < PASSWORD_MINIMAL_LENGTH) {
-                return "Your password must have at least " + PASSWORD_MINIMAL_LENGTH + " characters.";
+                return new ValidationResult(
+                        "Your password must have at least " + PASSWORD_MINIMAL_LENGTH + " characters.",
+                        false
+                );
             }
 
-            return null;
+            return new ValidationResult(true);
         });
 
         confirmPasswordField.setValidator(value -> {
+            String errorMessage = null;
+
             if (value.length() < PASSWORD_MINIMAL_LENGTH) {
-                return "Your password must have at least " + PASSWORD_MINIMAL_LENGTH + " characters.";
+                errorMessage =  "Your password must have at least " + PASSWORD_MINIMAL_LENGTH + " characters.";
             }
 
             if (!value.equals(passwordField.getText())) {
-                return "The passwords don't match.";
+                errorMessage = "The passwords don't match.";
             }
 
-            return null;
+            if (errorMessage == null) {
+                return new ValidationResult(true);
+            }
+
+            return new ValidationResult(errorMessage, false);
         });
     }
 }

@@ -1,8 +1,8 @@
 package com.passman.ui.components;
 
-import com.passman.commons.interfaces.Validable;
+import com.passman.commons.ValidationResult;
+import com.passman.commons.interfaces.ValidableValue;
 import com.passman.commons.Component;
-import com.passman.commons.abstracts.FXMLFile;
 import javafx.beans.NamedArg;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -20,7 +20,7 @@ public class FormField extends AnchorPane {
     private final boolean obscureText;
     private final boolean required;
 
-    private Validable validator;
+    private ValidableValue validator;
 
     public FormField(
             @NamedArg("labelText") String labelText,
@@ -50,27 +50,27 @@ public class FormField extends AnchorPane {
 
     public boolean validate() {
         String text = textField.getText();
-        String errorMessage = null;
+        ValidationResult result = new ValidationResult();
 
         if (text.isEmpty() || text.isBlank()) {
             if (required) {
-                errorMessage = "This field is required.";
+                result = new ValidationResult("This field is required.", false);
+            } else {
+                result = new ValidationResult(true);
             }
         } else {
-            errorMessage = validator.validate(text);
+            result = validator.validate(text);
         }
 
-        errorLabel.setText(errorMessage);
-
-        boolean isValid = errorMessage == null;
-        return isValid;
+        errorLabel.setText(result.getMessage());
+        return result.isValid();
     }
 
     public String getText() {
         return textField.getText();
     }
 
-    public void setValidator(Validable validator) {
+    public void setValidator(ValidableValue validator) {
         this.validator = validator;
     }
 

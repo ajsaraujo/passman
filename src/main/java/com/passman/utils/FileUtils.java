@@ -10,7 +10,6 @@ import java.io.InputStream;
 public class FileUtils {
     public static ImageView loadImageView(String imageName) {
         String path = "assets/" + imageName + ".png";
-        System.out.println("Trying to get the imagei in " + path + "...");
 
         try (InputStream inputStream = FileUtils.class.getClassLoader().getResourceAsStream(path)) {
             if (inputStream == null) {

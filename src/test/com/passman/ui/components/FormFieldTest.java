@@ -1,12 +1,8 @@
 package com.passman.ui.components;
 
-import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseButton;
+import com.passman.commons.ValidationResult;
 import javafx.stage.Stage;
-import org.junit.After;
 import org.junit.Test;
-import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit.ApplicationTest;
 
 import static org.junit.Assert.*;
@@ -26,10 +22,10 @@ public class FormFieldTest extends ApplicationTest {
         validableField.getTextField().setText("Friends");
         validableField.setValidator(value -> {
             if (value.equals("Friends")) {
-                return "Allan hates Friends";
+                return new ValidationResult( "Allan hates Friends", false);
             }
 
-            return null;
+            return new ValidationResult(true);
         });
     }
 
@@ -53,7 +49,7 @@ public class FormFieldTest extends ApplicationTest {
     @Test
     public void validateReturnsTrueIfFieldIsEmptyAndNotRequired() {
         FormField notRequiredField = new FormField("Gender", false, false);
-        notRequiredField.setValidator(value -> { return "Invalid field"; });
+        notRequiredField.setValidator(value -> new ValidationResult("Invalid field", false));
 
         assertTrue(notRequiredField.validate());
     }
@@ -84,7 +80,10 @@ public class FormFieldTest extends ApplicationTest {
     public void changesErrorLabelTextAccordingToValidation() {
         FormField field = new FormField("Allan's favorite pizza topping", false, true);
 
-        field.setValidator(value -> value.equals("Banana") ? null : value + " is not Allan's favorite pizza topping.");
+        field.setValidator(value -> value.equals("Banana")
+            ? new ValidationResult(true)
+            : new ValidationResult(value + " is not Allan's favorite pizza topping.", false)
+        );
 
         String firstLabelValue = field.getErrorLabel().getText();
 
