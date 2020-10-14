@@ -5,7 +5,10 @@ import com.passman.commons.abstracts.ViewController;
 import com.passman.ui.components.ConfirmOrCancel;
 import com.passman.ui.components.FileField;
 import com.passman.ui.components.FormField;
+import com.passman.utils.SerializingUtils;
 import javafx.fxml.FXML;
+
+import java.io.StreamCorruptedException;
 
 public class ImportPMANFile extends ViewController {
     @FXML ConfirmOrCancel buttons;
@@ -24,7 +27,13 @@ public class ImportPMANFile extends ViewController {
 
     private void confirmButtonClicked() {
         if (form.validate()) {
-            // push something
+            try {
+                SerializingUtils.deserialize(fileField.getText(), passwordField.getText());
+            } catch (StreamCorruptedException exception) {
+                passwordField.showErrorMessage("Invalid password.");
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }
     }
 }

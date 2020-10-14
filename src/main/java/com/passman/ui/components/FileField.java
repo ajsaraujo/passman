@@ -18,6 +18,7 @@ public abstract class FileField extends VBox implements ValidableField {
     @FXML Label errorLabel;
 
     protected FileChooser fileChooser;
+    private File selectedFile;
 
     public FileField() {
         Component fxmlFile = new Component("file-field");
@@ -59,6 +60,8 @@ public abstract class FileField extends VBox implements ValidableField {
         return textField.getText();
     }
 
+    public File getFile() { return selectedFile; }
+
     private FileChooser createFileChooser() {
         FileChooser.ExtensionFilter pmanExtension = new FileChooser.ExtensionFilter("Passman Files (*.pman)", "*.pman");
 
@@ -72,6 +75,7 @@ public abstract class FileField extends VBox implements ValidableField {
     protected void updateTextFieldWithNewFile(File selectedFile) throws IOException {
         if (selectedFile != null) {
             textField.setText(selectedFile.getCanonicalPath());
+            this.selectedFile = selectedFile;
         }
     }
 }

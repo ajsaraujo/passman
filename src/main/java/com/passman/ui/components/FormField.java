@@ -70,6 +70,10 @@ public class FormField extends AnchorPane implements ValidableField {
         return result.isValid();
     }
 
+    public void showErrorMessage(String errorMessage) {
+        errorLabel.setText(errorMessage);
+    }
+
     public String getText() {
         return textField.getText();
     }

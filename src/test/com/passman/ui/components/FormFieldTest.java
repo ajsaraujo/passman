@@ -2,6 +2,7 @@ package com.passman.ui.components;
 
 import com.passman.UITest;
 import com.passman.commons.ValidationResult;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
@@ -101,5 +102,17 @@ public class FormFieldTest extends UITest {
         assertEquals(firstLabelValue, "");
         assertEquals(labelValueAfterFailedValidation, "Chicken is not Allan's favorite pizza topping.");
         assertNull(labelValueAfterSuccessfulValidation);
+    }
+
+    @Test
+    public void showErrorMessageShouldMakeErrorLabelVisible() {
+        FormField field = new FormField("Password:", false, false);
+
+        field.showErrorMessage("Invalid password.");
+
+        Label label = field.getErrorLabel();
+
+        assertEquals(label.getText(), "Invalid password.");
+        assertTrue(label.isVisible());
     }
 }

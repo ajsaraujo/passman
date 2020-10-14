@@ -26,22 +26,17 @@ public class SerializingUtils {
         }
     }
 
-    public static User deserialize(String filePath, String password) {
+    public static User deserialize(String filePath, String password) throws StreamCorruptedException, Exception {
         SecretKey key = makeKey(password);
 
-        try {
-            Cipher cipher = Cipher.getInstance("Blowfish");
-            cipher.init(Cipher.DECRYPT_MODE, key);
+        Cipher cipher = Cipher.getInstance("Blowfish");
+        cipher.init(Cipher.DECRYPT_MODE, key);
 
-            ObjectInputStream stream = createInputStream(filePath, cipher);
+        ObjectInputStream stream = createInputStream(filePath, cipher);
 
-            SealedObject sealedObject = (SealedObject) stream.readObject();
+        SealedObject sealedObject = (SealedObject) stream.readObject();
 
-            return (User) sealedObject.getObject(cipher);
-        } catch (Exception exception) {
-            exception.printStackTrace();
-            return null;
-        }
+        return (User) sealedObject.getObject(cipher);
     }
 
     private static SecretKey makeKey(String password) {
