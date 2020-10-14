@@ -22,23 +22,11 @@ public class SignUp extends ViewController {
     @FXML FormField nameField;
     @FXML FormField passwordField;
     @FXML FormField confirmPasswordField;
-    @FXML Button searchFileButton;
-    @FXML TextField fileLocationField;
-    @FXML Label locationErrorLabel;
 
     private Form form;
-    private File selectedFile;
 
     @FXML
     public void initialize() {
-        String filePath = FileUtils.getAppFolder() + File.separatorChar + "save.pman";
-        selectedFile = new File(filePath);
-
-        fileLocationField.setText(filePath);
-        fileLocationField.setEditable(false);
-
-        locationErrorLabel.setVisible(false);
-
         form = new Form(nameField, passwordField, confirmPasswordField);
 
         injectValidators();
@@ -46,59 +34,19 @@ public class SignUp extends ViewController {
 
     @FXML
     public void confirmButtonClicked() {
-        ValidationResult result = validateLocation();
-
-        if (result.isValid()) {
-            locationErrorLabel.setVisible(false);
-        } else {
-            locationErrorLabel.setVisible(true);
-            locationErrorLabel.setText(result.getMessage());
-        }
-
-        if (form.validate() && result.isValid()) {
-            String path = fileLocationField.getText();
+        if (form.validate()) {
             String password = passwordField.getText();
             User user = new User(nameField.getText());
 
-            SerializingUtils.serialize(user, password, path);
+            SerializingUtils.serialize(user, password, "path");
 
             AlertDialog successDialog = new AlertDialog(new Stage(), "New Passman file created",
-                    "New Passman file created at " + path + ". Click Ok to proceed.",
+                    "New Passman file created at " + "path" + ". Click Ok to proceed.",
                     "Ok"
             );
+
             successDialog.show();
             navigator.pop();
-        }
-    }
-
-    private ValidationResult validateLocation() {
-        String path = fileLocationField.getText();
-
-        if (path.isEmpty() || path.isBlank()) {
-            return new ValidationResult("This field is required.", false);
-        }
-
-        if (!FileUtils.isValid(selectedFile)) {
-            return new ValidationResult("File path is not valid.", false);
-        }
-
-        return new ValidationResult(true);
-    }
-
-    @FXML
-    public void searchFileButtonClicked() throws IOException {
-        FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter pmanExtension = new FileChooser.ExtensionFilter("Passman Files (*.pman)", ".pman");
-
-        fileChooser.setInitialFileName("save.pman");
-        fileChooser.getExtensionFilters().add(pmanExtension);
-        fileChooser.setSelectedExtensionFilter(pmanExtension);
-
-        File selectedFile = fileChooser.showSaveDialog(new Stage());
-
-        if (selectedFile != null) {
-            this.selectedFile = selectedFile;
-            fileLocationField.setText(selectedFile.getCanonicalPath());
         }
     }
 

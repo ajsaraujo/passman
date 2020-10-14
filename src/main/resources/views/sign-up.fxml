@@ -3,7 +3,6 @@
 <?import com.passman.ui.components.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -31,36 +30,7 @@
             <Insets bottom="-15.0" />
          </VBox.margin>
       </FormField>
-      <Label text="File location:">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <VBox.margin>
-            <Insets bottom="-10.0" />
-         </VBox.margin>
-      </Label>
-      <HBox prefWidth="375.0" spacing="15.0">
-         <children>
-            <Button fx:id="searchFileButton" mnemonicParsing="false" onAction="#searchFileButtonClicked" prefHeight="45.0" prefWidth="50.0">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/folder.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <TextField fx:id="fileLocationField" prefHeight="45.0" prefWidth="312.0" HBox.hgrow="ALWAYS" />
-         </children>
-         <VBox.margin>
-            <Insets bottom="-10.0" />
-         </VBox.margin>
-      </HBox>
-      <Label fx:id="locationErrorLabel" styleClass="error-label" text="Pick a location by clicking on the button above.">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
+      <FileField />
       <HBox alignment="TOP_RIGHT" spacing="15.0">
          <children>
             <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClicked" prefHeight="42.0" prefWidth="118.0" styleClass="secondary-button" text="Cancel" />

@@ -1,5 +1,6 @@
 package com.passman.ui.components;
 
+import com.passman.UITest;
 import com.passman.commons.ValidationResult;
 import javafx.stage.Stage;
 import org.junit.Test;
@@ -7,7 +8,7 @@ import org.testfx.framework.junit.ApplicationTest;
 
 import static org.junit.Assert.*;
 
-public class FormFieldTest extends ApplicationTest {
+public class FormFieldTest extends UITest {
     private FormField usernameField;
     private FormField passwordField;
     private FormField validableField;
