@@ -17,7 +17,11 @@
          </VBox.margin>
       </Label>
       <OpenFileField />
-      <FormField labelText="File password:" required="true" />
+      <FormField labelText="File password:" required="true">
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin></FormField>
+      <ConfirmOrCancel />
    </children>
    <padding>
       <Insets bottom="40.0" left="50.0" right="60.0" top="35.0" />

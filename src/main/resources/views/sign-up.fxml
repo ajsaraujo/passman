@@ -30,7 +30,10 @@
             <Insets bottom="-15.0" />
          </VBox.margin>
       </FormField>
-      <SaveFileField fx:id="fileField" />
+      <SaveFileField fx:id="fileField">
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin></SaveFileField>
       <ConfirmOrCancel fx:id="buttons" />
    </children>
    <padding>
