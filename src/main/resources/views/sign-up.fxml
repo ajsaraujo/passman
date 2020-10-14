@@ -34,7 +34,7 @@
          <VBox.margin>
             <Insets bottom="20.0" />
          </VBox.margin></SaveFileField>
-      <ConfirmOrCancel fx:id="buttons" />
+      <ConfirmOrCancel fx:id="buttons" actionName="CREATE"/>
    </children>
    <padding>
       <Insets bottom="40.0" left="50.0" right="60.0" top="35.0" />

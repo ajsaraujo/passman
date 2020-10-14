@@ -24,4 +24,7 @@ public class Login extends ViewController {
     public void createFileClicked() {
         navigator.push(new View("sign-up"));
     }
+
+    @FXML
+    public void importFileClicked() { navigator.push(new View("import-pman-file")); }
 }

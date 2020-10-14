@@ -11,6 +11,8 @@ import org.junit.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
+import static org.testfx.api.FxAssert.verifyThat;
+import static org.testfx.util.NodeQueryUtils.hasText;
 
 public class ConfirmOrCancelTest extends UITest {
     private Navigator mockNavigator;
@@ -21,7 +23,7 @@ public class ConfirmOrCancelTest extends UITest {
         mockNavigator = mock(Navigator.class);
         mockView = mock(View.class);
 
-        ConfirmOrCancel confirmOrCancel = new ConfirmOrCancel();
+        ConfirmOrCancel confirmOrCancel = new ConfirmOrCancel("Sign In");
 
         confirmOrCancel.setNavigator(mockNavigator);
         confirmOrCancel.setOnConfirm(e -> {
@@ -30,6 +32,11 @@ public class ConfirmOrCancelTest extends UITest {
 
         primaryStage.setScene(new Scene(confirmOrCancel));
         primaryStage.show();
+    }
+
+    @Test
+    public void shouldSetTheActionNameProperly() {
+        verifyThat("#confirmButton", hasText("Sign In"));
     }
 
     @Test

@@ -16,7 +16,12 @@ public class LoginTest extends ControllerTest {
     @Test
     public void shouldPushSignUpWhenCreateButtonIsClicked() {
         clickOn("#createFileButton");
+        verify(navigator, times(1)).push(any());
+    }
 
+    @Test
+    public void shouldPushImportWhenImportButtonIsClicked() {
+        clickOn("#importFileButton");
         verify(navigator, times(1)).push(any());
     }
 }

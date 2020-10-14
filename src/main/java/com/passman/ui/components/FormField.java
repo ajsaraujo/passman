@@ -41,6 +41,9 @@ public class FormField extends AnchorPane implements ValidableField {
         label.setText(labelText);
         textField.setPromptText(null);
 
+        // By default, FormField accepts anything.
+        validator = e -> new ValidationResult(true);
+
         if (obscureText) {
             textField.setVisible(false);
             textField = passwordField;
@@ -51,7 +54,7 @@ public class FormField extends AnchorPane implements ValidableField {
 
     public boolean validate() {
         String text = textField.getText();
-        ValidationResult result = new ValidationResult();
+        ValidationResult result;
 
         if (text.isEmpty() || text.isBlank()) {
             if (required) {

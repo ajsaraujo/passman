@@ -60,7 +60,7 @@ public abstract class FileField extends VBox implements ValidableField {
     }
 
     private FileChooser createFileChooser() {
-        FileChooser.ExtensionFilter pmanExtension = new FileChooser.ExtensionFilter("Passman Files (*.pman)", ".pman");
+        FileChooser.ExtensionFilter pmanExtension = new FileChooser.ExtensionFilter("Passman Files (*.pman)", "*.pman");
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(pmanExtension);

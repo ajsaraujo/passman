@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox spacing="20.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.passman.ui.views.ImportPMANFile">
    <children>
       <Label text="Import Passman file">
          <font>
@@ -16,12 +16,12 @@
             <Insets bottom="15.0" />
          </VBox.margin>
       </Label>
-      <OpenFileField />
-      <FormField labelText="File password:" required="true">
+      <OpenFileField fx:id="fileField" />
+      <FormField fx:id="passwordField" labelText="File password:" obscureText="true" required="true">
          <VBox.margin>
             <Insets bottom="20.0" />
          </VBox.margin></FormField>
-      <ConfirmOrCancel />
+      <ConfirmOrCancel fx:id="buttons" actionName="IMPORT"/>
    </children>
    <padding>
       <Insets bottom="40.0" left="50.0" right="60.0" top="35.0" />
