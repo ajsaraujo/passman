@@ -7,17 +7,9 @@ import com.passman.models.User;
 import com.passman.ui.components.FileField;
 import com.passman.ui.components.FormField;
 import com.passman.ui.dialogs.AlertDialog;
-import com.passman.utils.FileUtils;
 import com.passman.utils.SerializingUtils;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.io.File;
-import java.io.IOException;
 
 public class SignUp extends ViewController {
     @FXML FormField nameField;

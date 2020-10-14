@@ -13,11 +13,11 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
-public class FileField extends VBox implements ValidableField {
+public abstract class FileField extends VBox implements ValidableField {
     @FXML TextField textField;
     @FXML Label errorLabel;
 
-    private FileChooser fileChooser;
+    protected FileChooser fileChooser;
 
     public FileField() {
         Component fxmlFile = new Component("file-field");
@@ -27,30 +27,15 @@ public class FileField extends VBox implements ValidableField {
     @FXML
     public void initialize() {
         textField.setEditable(false);
-        textField.setText(FileUtils.getAppFolder() + File.separatorChar + "save.pman");
 
         errorLabel.setText(null);
         errorLabel.setVisible(false);
+
+        fileChooser = createFileChooser();
     }
 
     @FXML
-    public void searchFileButtonClicked() throws IOException {
-        if (fileChooser == null) {
-            fileChooser = new FileChooser();
-        }
-
-        FileChooser.ExtensionFilter pmanExtension = new FileChooser.ExtensionFilter("Passman Files (*.pman)", ".pman");
-
-        fileChooser.setInitialFileName("save.pman");
-        fileChooser.getExtensionFilters().add(pmanExtension);
-        fileChooser.setSelectedExtensionFilter(pmanExtension);
-
-        File selectedFile = fileChooser.showSaveDialog(new Stage());
-
-        if (selectedFile != null) {
-            textField.setText(selectedFile.getCanonicalPath());
-        }
-    }
+    public abstract void searchFileButtonClicked() throws IOException;
 
     public boolean validate() {
         String path = getText();
@@ -72,5 +57,21 @@ public class FileField extends VBox implements ValidableField {
 
     public String getText() {
         return textField.getText();
+    }
+
+    private FileChooser createFileChooser() {
+        FileChooser.ExtensionFilter pmanExtension = new FileChooser.ExtensionFilter("Passman Files (*.pman)", ".pman");
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(pmanExtension);
+        fileChooser.setSelectedExtensionFilter(pmanExtension);
+
+        return fileChooser;
+    }
+
+    protected void updateTextFieldWithNewFile(File selectedFile) throws IOException {
+        if (selectedFile != null) {
+            textField.setText(selectedFile.getCanonicalPath());
+        }
     }
 }

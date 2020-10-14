@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.passman.ui.components.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -11,7 +12,12 @@
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
+         <VBox.margin>
+            <Insets bottom="15.0" />
+         </VBox.margin>
       </Label>
+      <OpenFileField />
+      <FormField labelText="File password:" required="true" />
    </children>
    <padding>
       <Insets bottom="40.0" left="50.0" right="60.0" top="35.0" />

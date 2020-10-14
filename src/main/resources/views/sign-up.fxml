@@ -30,7 +30,7 @@
             <Insets bottom="-15.0" />
          </VBox.margin>
       </FormField>
-      <FileField fx:id="fileField"/>
+      <SaveFileField fx:id="fileField"/>
       <HBox alignment="TOP_RIGHT" spacing="15.0">
          <children>
             <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClicked" prefHeight="42.0" prefWidth="118.0" styleClass="secondary-button" text="Cancel" />
