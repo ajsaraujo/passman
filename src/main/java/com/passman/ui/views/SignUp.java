@@ -4,6 +4,7 @@ import com.passman.commons.Form;
 import com.passman.commons.ValidationResult;
 import com.passman.commons.abstracts.ViewController;
 import com.passman.models.User;
+import com.passman.ui.components.FileField;
 import com.passman.ui.components.FormField;
 import com.passman.ui.dialogs.AlertDialog;
 import com.passman.utils.FileUtils;
@@ -22,12 +23,13 @@ public class SignUp extends ViewController {
     @FXML FormField nameField;
     @FXML FormField passwordField;
     @FXML FormField confirmPasswordField;
+    @FXML FileField fileField;
 
     private Form form;
 
     @FXML
     public void initialize() {
-        form = new Form(nameField, passwordField, confirmPasswordField);
+        form = new Form(nameField, passwordField, confirmPasswordField, fileField);
 
         injectValidators();
     }
@@ -37,11 +39,12 @@ public class SignUp extends ViewController {
         if (form.validate()) {
             String password = passwordField.getText();
             User user = new User(nameField.getText());
+            String path = fileField.getText();
 
-            SerializingUtils.serialize(user, password, "path");
+            SerializingUtils.serialize(user, password, path);
 
             AlertDialog successDialog = new AlertDialog(new Stage(), "New Passman file created",
-                    "New Passman file created at " + "path" + ". Click Ok to proceed.",
+                    "New Passman file created at " + path + ". Click Ok to proceed.",
                     "Ok"
             );
 

@@ -1,6 +1,7 @@
 package com.passman.ui.components;
 
 import com.passman.commons.ValidationResult;
+import com.passman.commons.interfaces.ValidableField;
 import com.passman.commons.interfaces.ValidableValue;
 import com.passman.commons.Component;
 import javafx.beans.NamedArg;
@@ -10,7 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class FormField extends AnchorPane {
+public class FormField extends AnchorPane implements ValidableField {
     @FXML Label label;
     @FXML Label errorLabel;
     @FXML TextField textField;

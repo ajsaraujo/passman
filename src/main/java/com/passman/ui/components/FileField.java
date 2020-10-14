@@ -1,6 +1,7 @@
 package com.passman.ui.components;
 
 import com.passman.commons.Component;
+import com.passman.commons.interfaces.ValidableField;
 import com.passman.utils.FileUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,7 +13,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
-public class FileField extends VBox {
+public class FileField extends VBox implements ValidableField {
     @FXML TextField textField;
     @FXML Label errorLabel;
 
@@ -49,13 +50,24 @@ public class FileField extends VBox {
         if (selectedFile != null) {
             textField.setText(selectedFile.getCanonicalPath());
         }
-    };
+    }
 
-    // This setter exists for mocking purposes. We can't pass
-    // the FileChooser through the constructor because the FileField
-    // object is instantiated in FXML.
-    public void setFileChooser(FileChooser fileChooser) {
-        this.fileChooser = fileChooser;
+    public boolean validate() {
+        String path = getText();
+        String errorMessage = null;
+
+        if (path.isEmpty() || path.isBlank()) {
+            errorMessage = "You should pick a file location.";
+        } else if (!FileUtils.isValid(new File(path))) {
+            errorMessage = "Please pick another location.";
+        }
+
+        boolean isValid = errorMessage == null;
+
+        errorLabel.setVisible(!isValid);
+        errorLabel.setText(errorMessage);
+
+        return isValid;
     }
 
     public String getText() {

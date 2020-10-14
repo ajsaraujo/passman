@@ -1,16 +1,12 @@
 package com.passman.ui.components;
 
-import com.passman.TestUtils;
 import com.passman.UITest;
 import javafx.scene.Scene;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static org.loadui.testfx.GuiTest.find;
-import static org.mockito.Mockito.*;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.isInvisible;
 

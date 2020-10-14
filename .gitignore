@@ -1,3 +1,6 @@
+# Password files created by the app
+*.pman
+
 .idea
 *.imll
 temp.txt
