@@ -30,16 +30,8 @@
             <Insets bottom="-15.0" />
          </VBox.margin>
       </FormField>
-      <SaveFileField fx:id="fileField"/>
-      <HBox alignment="TOP_RIGHT" spacing="15.0">
-         <children>
-            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClicked" prefHeight="42.0" prefWidth="118.0" styleClass="secondary-button" text="Cancel" />
-            <Button fx:id="confirmButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#confirmButtonClicked" prefHeight="42.0" prefWidth="129.0" text="Confirm" />
-         </children>
-         <VBox.margin>
-            <Insets top="20.0" />
-         </VBox.margin>
-      </HBox>
+      <SaveFileField fx:id="fileField" />
+      <ConfirmOrCancel fx:id="buttons" />
    </children>
    <padding>
       <Insets bottom="40.0" left="50.0" right="60.0" top="35.0" />

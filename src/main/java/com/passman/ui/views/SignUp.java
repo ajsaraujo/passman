@@ -4,6 +4,7 @@ import com.passman.commons.Form;
 import com.passman.commons.ValidationResult;
 import com.passman.commons.abstracts.ViewController;
 import com.passman.models.User;
+import com.passman.ui.components.ConfirmOrCancel;
 import com.passman.ui.components.FileField;
 import com.passman.ui.components.FormField;
 import com.passman.ui.dialogs.AlertDialog;
@@ -16,6 +17,7 @@ public class SignUp extends ViewController {
     @FXML FormField passwordField;
     @FXML FormField confirmPasswordField;
     @FXML FileField fileField;
+    @FXML ConfirmOrCancel buttons;
 
     private Form form;
 
@@ -24,10 +26,12 @@ public class SignUp extends ViewController {
         form = new Form(nameField, passwordField, confirmPasswordField, fileField);
 
         injectValidators();
+
+        buttons.setNavigator(navigator);
+        buttons.setOnConfirm(e -> confirmButtonClicked());
     }
 
-    @FXML
-    public void confirmButtonClicked() {
+    private void confirmButtonClicked() {
         if (form.validate()) {
             String password = passwordField.getText();
             User user = new User(nameField.getText());
@@ -43,11 +47,6 @@ public class SignUp extends ViewController {
             successDialog.show();
             navigator.pop();
         }
-    }
-
-    @FXML
-    public void cancelButtonClicked() {
-        navigator.pop();
     }
 
     private void injectValidators() {
