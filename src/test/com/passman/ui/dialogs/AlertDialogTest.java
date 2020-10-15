@@ -1,6 +1,8 @@
 package com.passman.ui.dialogs;
 
 import com.passman.UITest;
+import javafx.application.Platform;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -8,24 +10,38 @@ import org.junit.Test;
 import static org.mockito.Mockito.*;
 
 public class AlertDialogTest extends UITest {
-    private Stage stage;
+    private Stage actualStage;
+    private Stage mockStage;
+    private AlertDialog dialog1;
+    private AlertDialog dialog2;
 
     @Override
     @Ignore
     public void start(Stage primaryStage) {
-        stage = spy(Stage.class);
-        //AlertDialog dialog = new AlertDialog(stage);
-        //dialog.show();
+        mockStage = spy(Stage.class);
+        dialog1 = new AlertDialog(mockStage, "Title", "Message", "Action");
+
+        // We can't just call dialog.show() because doing this, TestFX doesn't acknowledge
+        // the newly created stage. We also have to create a new dialog since the same node
+        // can't be the root of two different scenes.
+        dialog2 = new AlertDialog(mockStage, "Title", "Message", "Action");
+        actualStage = new Stage();
+        actualStage.setScene(new Scene(dialog2));
+        actualStage.show();
     }
 
     @Test
-    @Ignore
-    /*
-        This test was working, but it isn't anymore.
-        For some reason TestFX isn't finding #proceedButton.
-     */
     public void clickingOkShouldCloseTheDialog() {
-        clickOn("#proceedButton");
-        verify(stage, times(1)).close();
+        clickOn("#okButton");
+        verify(mockStage, times(1)).close();
+    }
+    
+    @Test
+    public void showShouldShowTheDialog() {
+        // We have to call later since there's a call to Stage.show().
+        Platform.runLater(() -> {
+            dialog1.show();
+            verify(mockStage, times(1)).showAndWait();
+        });
     }
 }
