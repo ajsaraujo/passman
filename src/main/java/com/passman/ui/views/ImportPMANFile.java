@@ -5,9 +5,10 @@ import com.passman.commons.abstracts.ViewController;
 import com.passman.ui.components.ConfirmOrCancel;
 import com.passman.ui.components.FileField;
 import com.passman.ui.components.FormField;
-import com.passman.utils.SerializingUtils;
+import com.passman.utils.Serializer;
 import javafx.fxml.FXML;
 
+import java.io.Serializable;
 import java.io.StreamCorruptedException;
 
 public class ImportPMANFile extends ViewController {
@@ -23,12 +24,16 @@ public class ImportPMANFile extends ViewController {
 
         buttons.setOnConfirm(e -> confirmButtonClicked());
         buttons.setNavigator(navigator);
+
+        if (serializer == null) {
+            serializer = new Serializer();
+        }
     }
 
     private void confirmButtonClicked() {
         if (form.validate()) {
             try {
-                SerializingUtils.deserialize(fileField.getText(), passwordField.getText());
+                serializer.deserialize(fileField.getText(), passwordField.getText());
             } catch (StreamCorruptedException exception) {
                 passwordField.showErrorMessage("Invalid password.");
             } catch (Exception exception) {

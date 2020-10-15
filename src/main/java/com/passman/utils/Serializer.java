@@ -7,8 +7,8 @@ import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-public class SerializingUtils {
-    public static void serialize(User user, String password, String filePath) {
+public class Serializer {
+    public void serialize(User user, String password, String filePath) {
         SecretKey key = makeKey(password);
 
         try {
@@ -26,7 +26,7 @@ public class SerializingUtils {
         }
     }
 
-    public static User deserialize(String filePath, String password) throws StreamCorruptedException, Exception {
+    public User deserialize(String filePath, String password) throws StreamCorruptedException, Exception {
         SecretKey key = makeKey(password);
 
         Cipher cipher = Cipher.getInstance("Blowfish");
@@ -39,18 +39,18 @@ public class SerializingUtils {
         return (User) sealedObject.getObject(cipher);
     }
 
-    private static SecretKey makeKey(String password) {
+    private SecretKey makeKey(String password) {
         return new SecretKeySpec(password.getBytes(StandardCharsets.UTF_8), "Blowfish");
     }
 
-    private static ObjectOutputStream createOutputStream(String filePath, Cipher cipher) throws IOException {
+    private ObjectOutputStream createOutputStream(String filePath, Cipher cipher) throws IOException {
         FileOutputStream fileStream = new FileOutputStream(filePath);
         BufferedOutputStream bufferedStream = new BufferedOutputStream(fileStream);
         CipherOutputStream cipherStream = new CipherOutputStream(bufferedStream, cipher);
         return new ObjectOutputStream(cipherStream);
     }
 
-    private static ObjectInputStream createInputStream(String filePath, Cipher cipher) throws Exception {
+    private ObjectInputStream createInputStream(String filePath, Cipher cipher) throws Exception {
         FileInputStream fileStream = new FileInputStream(filePath);
         BufferedInputStream bufferedStream = new BufferedInputStream(fileStream);
         CipherInputStream cipherStream = new CipherInputStream(bufferedStream, cipher);

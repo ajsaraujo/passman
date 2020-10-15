@@ -8,7 +8,6 @@ import com.passman.ui.components.ConfirmOrCancel;
 import com.passman.ui.components.FileField;
 import com.passman.ui.components.FormField;
 import com.passman.ui.dialogs.AlertDialog;
-import com.passman.utils.SerializingUtils;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
@@ -37,7 +36,7 @@ public class SignUp extends ViewController {
             User user = new User(nameField.getText());
             String path = fileField.getText();
 
-            SerializingUtils.serialize(user, password, path);
+            serializer.serialize(user, password, path);
 
             AlertDialog successDialog = new AlertDialog(new Stage(), "New Passman file created",
                     "New Passman file created at " + path + ". Click Ok to proceed.",
