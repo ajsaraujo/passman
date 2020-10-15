@@ -17,37 +17,41 @@ public class Serializer {
 
             SealedObject sealedObject = new SealedObject(user, cipher);
 
-            ObjectOutputStream stream = createOutputStream(filePath, cipher);
-
-            stream.writeObject(sealedObject);
-            stream.close();
+            writeObject(filePath, cipher, sealedObject);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
 
-    public User deserialize(String filePath, String password) throws StreamCorruptedException, Exception {
-        SecretKey key = makeKey(password);
-
-        Cipher cipher = Cipher.getInstance("Blowfish");
-        cipher.init(Cipher.DECRYPT_MODE, key);
-
-        ObjectInputStream stream = createInputStream(filePath, cipher);
-
-        SealedObject sealedObject = (SealedObject) stream.readObject();
-
-        return (User) sealedObject.getObject(cipher);
+    private void writeObject(String filePath, Cipher cipher, SealedObject sealedObject) {
+        try (ObjectOutputStream stream = createOutputStream(filePath, cipher)) {
+            stream.writeObject(sealedObject);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
-    private SecretKey makeKey(String password) {
-        return new SecretKeySpec(password.getBytes(StandardCharsets.UTF_8), "Blowfish");
-    }
-
-    private ObjectOutputStream createOutputStream(String filePath, Cipher cipher) throws IOException {
+    private ObjectOutputStream createOutputStream(String filePath, Cipher cipher) throws Exception {
         FileOutputStream fileStream = new FileOutputStream(filePath);
         BufferedOutputStream bufferedStream = new BufferedOutputStream(fileStream);
         CipherOutputStream cipherStream = new CipherOutputStream(bufferedStream, cipher);
         return new ObjectOutputStream(cipherStream);
+    }
+
+    public User deserialize(String filePath, String password) throws StreamCorruptedException {
+        SecretKey key = makeKey(password);
+
+        Cipher cipher = createDecryptCypher(key);
+
+        try (ObjectInputStream stream = createInputStream(filePath, cipher)) {
+            SealedObject sealedObject = (SealedObject) stream.readObject();
+            return (User) sealedObject.getObject(cipher);
+        } catch (StreamCorruptedException exception) {
+            throw exception;
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return null;
+        }
     }
 
     private ObjectInputStream createInputStream(String filePath, Cipher cipher) throws Exception {
@@ -55,5 +59,21 @@ public class Serializer {
         BufferedInputStream bufferedStream = new BufferedInputStream(fileStream);
         CipherInputStream cipherStream = new CipherInputStream(bufferedStream, cipher);
         return new ObjectInputStream(cipherStream);
+    }
+
+    private SecretKey makeKey(String password) {
+        return new SecretKeySpec(password.getBytes(StandardCharsets.UTF_8), "Blowfish");
+    }
+
+    private Cipher createDecryptCypher(SecretKey key) {
+        try {
+            Cipher cipher = Cipher.getInstance("Blowfish");
+            cipher.init(Cipher.DECRYPT_MODE, key);
+
+            return cipher;
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return null;
+        }
     }
 }

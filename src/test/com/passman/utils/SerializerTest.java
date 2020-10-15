@@ -1,13 +1,17 @@
 package com.passman.utils;
 
 import com.passman.models.User;
-import com.passman.utils.FileUtils;
-import com.passman.utils.Serializer;
+import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.StreamCorruptedException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
@@ -38,5 +42,20 @@ public class SerializerTest {
         User obtainedUser = new Serializer().deserialize(path, password);
 
         assertEquals(user.getName(), obtainedUser.getName());
+    }
+
+    @After
+    @Ignore
+    // This is throwing an exception, it can't delete the file because
+    // it's being used by another process. Maybe the stream wasn't closed?
+    // Related thread: https://stackoverflow.com/questions/64370560/cant-delete-file-because-its-used-by-another-process-even-though-stream-was-c
+    public void tearDown() {
+        Path filePath = Paths.get(path);
+
+        try {
+            Files.delete(filePath);
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 }
