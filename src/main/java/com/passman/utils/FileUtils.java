@@ -40,4 +40,8 @@ public class FileUtils {
             return null;
         }
     }
+
+    public static String getDummyFilePath() {
+        return getAppFolder() + File.separatorChar + "dummy.pman";
+    }
 }

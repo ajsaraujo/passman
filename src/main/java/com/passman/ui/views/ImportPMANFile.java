@@ -34,6 +34,7 @@ public class ImportPMANFile extends ViewController {
         if (form.validate()) {
             try {
                 serializer.deserialize(fileField.getText(), passwordField.getText());
+                navigator.pop();
             } catch (StreamCorruptedException exception) {
                 passwordField.showErrorMessage("Invalid password.");
             } catch (Exception exception) {

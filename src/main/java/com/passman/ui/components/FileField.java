@@ -19,6 +19,7 @@ public abstract class FileField extends VBox implements ValidableField {
 
     protected FileChooser fileChooser;
     private File selectedFile;
+    private static boolean testMode = false;
 
     public FileField() {
         Component fxmlFile = new Component("file-field");
@@ -27,7 +28,9 @@ public abstract class FileField extends VBox implements ValidableField {
 
     @FXML
     public void initialize() {
-        textField.setEditable(false);
+        // We want to be able to edit them by hand in tests, since handling FileChoosers
+        // with the FXRobot is a pain.
+        textField.setEditable(testMode);
 
         errorLabel.setText(null);
         errorLabel.setVisible(false);
@@ -61,6 +64,13 @@ public abstract class FileField extends VBox implements ValidableField {
     }
 
     public File getFile() { return selectedFile; }
+
+    /**
+     * When testMode is true, FileFields are editable.
+     */
+    public static void setTestMode(boolean testMode) {
+        FileField.testMode = testMode;
+    }
 
     private FileChooser createFileChooser() {
         FileChooser.ExtensionFilter pmanExtension = new FileChooser.ExtensionFilter("Passman Files (*.pman)", "*.pman");

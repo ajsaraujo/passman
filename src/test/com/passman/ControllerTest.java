@@ -3,6 +3,7 @@ package com.passman;
 import com.passman.commons.Navigator;
 import com.passman.commons.abstracts.FXMLFile;
 import com.passman.commons.abstracts.ViewController;
+import com.passman.ui.components.FileField;
 import com.passman.utils.Serializer;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -23,6 +24,8 @@ public abstract class ControllerTest extends UITest {
 
         ViewController.setNavigator(navigator);
         ViewController.setSerializer(serializer);
+
+        FileField.setTestMode(true);
     }
 
     protected void render(FXMLFile file) {
