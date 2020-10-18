@@ -15,14 +15,14 @@ public class FormTest extends ApplicationTest {
 
     @Override
     public void start(Stage stage) throws Exception {
-        validField1 = new FormField("First name", false, false);
-        validField2 = new FormField("Last name", false, false);
-        validField3 = new FormField("Password", true, true);
+        validField1 = new FormField("First name", false, false, null, null);
+        validField2 = new FormField("Last name", false, false, null, null);
+        validField3 = new FormField("Password", true, true, null, null);
 
         validField3.setValidator(value -> new ValidationResult(true));
         validField3.getTextField().setText("123456abcde");
 
-        invalidField = new FormField("Confirm Password", true, true);
+        invalidField = new FormField("Confirm Password", true, true, null, null);
     }
 
     @Test

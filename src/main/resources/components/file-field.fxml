@@ -20,7 +20,10 @@
          <Insets bottom="-10.0" />
       </VBox.margin>
       <children>
-            <TextField fx:id="textField" prefHeight="45.0" prefWidth="312.0" />
+            <TextField fx:id="textField" prefHeight="45.0" prefWidth="312.0">
+            <padding>
+               <Insets left="60.0" />
+            </padding></TextField>
             <Button fx:id="button" mnemonicParsing="false" onAction="#searchFileButtonClicked" prefHeight="45.0" prefWidth="50.0" StackPane.alignment="TOP_LEFT">
                 <graphic>
                     <ImageView fitHeight="30.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
