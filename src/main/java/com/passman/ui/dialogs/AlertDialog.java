@@ -1,15 +1,14 @@
 package com.passman.ui.dialogs;
 
-import com.passman.commons.Dialog;
+import com.passman.commons.DialogFile;
 import com.passman.utils.UIUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class AlertDialog extends VBox {
+public class AlertDialog extends Dialog {
     @FXML Label titleLabel;
     @FXML Label messageLabel;
     @FXML Button okButton;
@@ -17,15 +16,15 @@ public class AlertDialog extends VBox {
     private final String title;
     private final String message;
     private final String buttonText;
-    private final Stage stage;
 
     public AlertDialog(Stage stage, String title, String message, String buttonText) {
-        this.stage = stage;
+        super(stage);
+
         this.title = title;
         this.message = message;
         this.buttonText = buttonText;
 
-        Dialog fxmlFile = new Dialog("alert-dialog");
+        DialogFile fxmlFile = new DialogFile("alert-dialog");
         fxmlFile.injectController(this);
     }
 

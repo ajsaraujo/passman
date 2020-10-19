@@ -19,7 +19,7 @@
                   <Font size="16.0" />
                </font>
             </PasswordField>
-            <TextField fx:id="textField" prefHeight="45.0" prefWidth="600.0" promptText="Prompt Text" text="1, 2, 3, testando...">
+            <TextField fx:id="textField" prefHeight="45.0" prefWidth="600.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -27,7 +27,7 @@
                   <Insets />
                </opaqueInsets>
             </TextField>
-            <Button fx:id="actionButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="50.0" text="Button" StackPane.alignment="TOP_LEFT" />
+            <Button fx:id="actionButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="50.0" StackPane.alignment="TOP_LEFT" />
          </children>
       </StackPane>
       <Label fx:id="errorLabel" prefHeight="30.0" prefWidth="600.0" styleClass="error-label" textFill="#d32f2f" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="96.0">

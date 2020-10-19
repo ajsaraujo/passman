@@ -32,7 +32,8 @@ public class AlertDialogTest extends DialogTest {
         clickOn("#okButton");
         verify(mockStage, times(1)).close();
     }
-    
+
+    // TODO: Move this method to the abstract class test.
     @Test
     public void showShouldShowTheDialog() {
         // We have to call later since there's a call to Stage.show().

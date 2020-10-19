@@ -1,6 +1,5 @@
 package com.passman;
 
-import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 import static org.mockito.Mockito.spy;
