@@ -6,16 +6,17 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ClipboardUtilsTest extends UITest {
+public class ClipboardManagerTest extends UITest {
     @Test
     public void shouldCopyAndGetContentCorrectly() {
         // We need to run later since the Clipboard API runs on the FX Thread.
         Platform.runLater(() -> {
             String content = "Bananas on Pajamas";
 
-            ClipboardUtils.copyToClipboard(content);
+            ClipboardManager clipboard = new ClipboardManager();
+            clipboard.copy(content);
 
-            assertEquals(content, ClipboardUtils.getClipboardContent());
+            assertEquals(content, clipboard.getContent());
         });
     }
 }

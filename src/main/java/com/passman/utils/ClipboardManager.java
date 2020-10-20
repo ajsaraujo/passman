@@ -5,14 +5,14 @@ import javafx.scene.input.DataFormat;
 
 import java.util.Map;
 
-public class ClipboardUtils {
-    private static final Clipboard clipboard = Clipboard.getSystemClipboard();
+public class ClipboardManager {
+    private static final Clipboard clipboard = javafx.scene.input.Clipboard.getSystemClipboard();
 
-    public static String getClipboardContent() {
+    public String getContent() {
         return clipboard.getString();
     }
 
-    public static void copyToClipboard(String content) {
+    public void copy(String content) {
         clipboard.setContent(Map.of(DataFormat.PLAIN_TEXT, content));
     }
 }
