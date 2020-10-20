@@ -117,6 +117,10 @@ public class FormField extends AnchorPane implements ValidableField {
         return textField.getText();
     }
 
+    public void setText(String text) {
+        textField.setText(text);
+    }
+
     public void setValidator(ValidableValue validator) {
         this.validator = validator;
     }
