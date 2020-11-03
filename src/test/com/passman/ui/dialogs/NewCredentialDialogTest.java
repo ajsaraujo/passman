@@ -1,6 +1,7 @@
 package com.passman.ui.dialogs;
 
 import com.passman.DialogTest;
+import com.passman.models.Credential;
 import com.passman.utils.ClipboardManager;
 import com.passman.utils.Randomizer;
 import javafx.scene.Scene;
@@ -44,7 +45,8 @@ public class NewCredentialDialogTest extends DialogTest {
     }
 
     @Test
-    public void shouldReturnTheNewlyCreatedCredential() {};
+    public void shouldReturnTheNewlyCreatedCredential() {
+    }
 
     @Test
     public void shouldReturnNullIfUserCancels() {};
