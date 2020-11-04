@@ -1,6 +1,7 @@
 package com.passman.ui.views;
 
 import com.passman.commons.Form;
+import com.passman.commons.View;
 import com.passman.commons.abstracts.ViewController;
 import com.passman.ui.components.ConfirmOrCancel;
 import com.passman.ui.components.FileField;
@@ -34,7 +35,7 @@ public class ImportPMANFile extends ViewController {
         if (form.validate()) {
             try {
                 serializer.deserialize(fileField.getText(), passwordField.getText());
-                navigator.pop();
+                navigator.push(new View("home"));
             } catch (StreamCorruptedException exception) {
                 passwordField.showErrorMessage("Invalid password.");
             } catch (Exception exception) {

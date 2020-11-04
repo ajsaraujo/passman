@@ -6,8 +6,8 @@ import javafx.scene.Scene;
 
 import java.io.IOException;
 
-public class Dialog extends Component {
-    public Dialog(String name) {
+public class DialogFile extends Component {
+    public DialogFile(String name) {
         this.path = Component.class.getResource("/dialogs/" + name + ".fxml");
     }
 }

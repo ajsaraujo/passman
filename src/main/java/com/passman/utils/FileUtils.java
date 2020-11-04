@@ -20,7 +20,7 @@ public class FileUtils {
             return new ImageView(image);
         } catch (Exception exception) {
             exception.printStackTrace();
-            return null;
+            return new ImageView();
         }
     }
 

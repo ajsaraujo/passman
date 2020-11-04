@@ -65,3 +65,12 @@
     -fx-text-fill: #448AFF;
     -fx-background-color: transparent;
 }
+
+.floating-action-button {
+    -fx-background-radius: 100%;
+    -fx-background-color: #FF9800;
+}
+
+.floating-action-button:hover {
+    -fx-background-color: #F57C00;
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.passman.ui.views.Home">
+   <center>
+      <AnchorPane prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <HBox spacing="15.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="25.0">
+               <children>
+                  <TextField prefHeight="35.0" prefWidth="650.0" promptText="Search by service or username" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="89.0" styleClass="secondary-button" text="Search" HBox.hgrow="SOMETIMES" />
+               </children>
+            </HBox>
+            <ListView layoutX="35.0" layoutY="83.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="83.0" />
+            <Button fx:id="newCredentialButton" mnemonicParsing="false" onAction="#newCredentialButtonClicked" prefHeight="60.0" prefWidth="60.0" styleClass="floating-action-button" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="45.0">
+               <graphic>
+                  <ImageView fitHeight="44.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/add-big.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Save as..." />
+                        <MenuItem mnemonicParsing="false" text="Change password..." />
+                     </items>
+                </Menu>
+              </menus>
+               <padding>
+                  <Insets left="35.0" />
+               </padding>
+            </MenuBar>
+         </children></AnchorPane>
+   </top>
+</BorderPane>

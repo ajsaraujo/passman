@@ -65,7 +65,7 @@ public class ImportPMANFileTest extends ControllerTest {
         clickOn("#confirmButton");
         
         verify(serializer, times(1)).deserialize(path, "blablabla");
-        verify(navigator, times(1)).pop();
+        verify(navigator, times(1)).push(any());
     }
 
     private void writeToField(String field, String content) {
