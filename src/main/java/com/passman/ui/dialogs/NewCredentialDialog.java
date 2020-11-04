@@ -48,6 +48,7 @@ public class NewCredentialDialog extends Dialog {
     public void confirmButtonClicked() {
         if (form.validate()) {
             createdCredential = new Credential(serviceField.getText(), usernameField.getText(), passwordField.getText());
+            stage.close();
         }
     }
 

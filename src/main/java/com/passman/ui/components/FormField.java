@@ -87,8 +87,8 @@ public class FormField extends AnchorPane implements ValidableField {
         }
 
         // We need to add some padding so the button doesn't cover the text.
-        textField.setPadding(new Insets(0, 60, 0, 0));
-        textField.setPadding(new Insets(0, 60, 0, 0));
+        textField.setPadding(new Insets(0, 0, 0, 60));
+        passwordField.setPadding(new Insets(0, 0, 0, 60));
     }
 
     public boolean validate() {
