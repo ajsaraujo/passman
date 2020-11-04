@@ -42,6 +42,7 @@ public class NewCredentialDialog extends Dialog {
         form = new Form(serviceField, usernameField, passwordField);
 
         buttons.setOnConfirm(e -> confirmButtonClicked());
+        buttons.setStage(this.stage);
     }
 
     public void confirmButtonClicked() {

@@ -13,6 +13,4 @@ public class HomeTest extends ControllerTest {
 
         render(new View("home"));
     }
-
-
 }
