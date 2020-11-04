@@ -40,11 +40,13 @@ public class NewCredentialDialog extends Dialog {
         passwordField.setOnAction(e -> copyPasswordToClipboard());
 
         form = new Form(serviceField, usernameField, passwordField);
+
+        buttons.setOnConfirm(e -> confirmButtonClicked());
     }
 
     public void confirmButtonClicked() {
         if (form.validate()) {
-
+            createdCredential = new Credential(serviceField.getText(), usernameField.getText(), passwordField.getText());
         }
     }
 
@@ -55,15 +57,10 @@ public class NewCredentialDialog extends Dialog {
     public Credential promptForCredential() {
         super.show();
 
-        return new Credential("", "", "");
+        return createdCredential;
     }
 
     // Getters and setters for test purposes.
-
-    // Q: Why not write content using FXRobot's write method, as we do in other tests?
-    // A: We couldn't get the Robot to recognize the Stage created by NewCredentialDialog.
-    //    once we do this we can get rid of these methods.
-
     public String getPasswordFieldContent() {
         return passwordField.getText();
     }
