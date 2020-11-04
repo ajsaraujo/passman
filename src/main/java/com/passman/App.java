@@ -8,6 +8,7 @@ package com.passman;
 import com.passman.commons.View;
 import com.passman.commons.abstracts.ViewController;
 import com.passman.commons.Navigator;
+import com.passman.utils.DialogProvider;
 import com.passman.utils.Serializer;
 import com.sun.prism.Image;
 import javafx.application.Application;
@@ -21,9 +22,12 @@ public class App extends Application {
     public void start(Stage primaryStage) {
         Navigator navigator = new Navigator(primaryStage, new Stack<>());
         Serializer serializer = new Serializer();
+        DialogProvider dialogProvider = new DialogProvider();
 
+        // Inversion of control for testing purposes.
         ViewController.setNavigator(navigator);
         ViewController.setSerializer(serializer);
+        ViewController.setDialogProvider(dialogProvider);
 
         navigator.push(new View("login"));
         navigator.render();
